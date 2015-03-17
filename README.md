@@ -35,7 +35,9 @@ encodes the following information:
 - The ID of the user who granted access to personal data.
 - A set of actions available to the application.
 
-![Authorization Flow](images/ascribe_api_workflow.svg?raw=true)
+![Authorization Flow](images/ascribe_api_workflow.svg)
+
+![Authorization Flow PNG](images/ascribe_api_workflow.png)
 
 ### Register your Application or Marketplace
 The developer (e.g. admin@makx.com) should have an [ascribe account](https://www.ascribe.io), 
