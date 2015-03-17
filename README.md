@@ -92,28 +92,173 @@ curl -X POST http://localhost:8000/o/token/ \
 
 #### List all pieces
 
-##### Arguments
+##### HTTP Request
+`GET https://www.ascribe.io/api/0.1/pieces/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
 
 ##### Example Request
+```shell
+curl http://localhost:8000/api/0.1/pieces/ \
+-H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
+```
 
 ##### Example Response
+```json
+{
+    "pieces": [
+        {
+            "artistNameOrID": "Makx",
+            "artist_name": "Makx",
+            "availableActions": "Can Transfer/Consign",
+            "bitcoin_ID_noPrefix": "1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X",
+            "btcOwnerAddress_noPrefix": "1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X",
+            "canAddToPieces": false,
+            "canConsign": true,
+            "canDelete": true,
+            "canEdit": true,
+            "canRemoveFromPieces": false,
+            "canShare": true,
+            "canTransfer": true,
+            "canView": true,
+            "consign_status": 0,
+            "consign_status_str": "-",
+            "consignee_name": null,
+            "date_created": "2015-01-01",
+            "datetime": null,
+            "datetime_registered": "2015-03-17T14:43:37.568Z",
+            "digital_work": {
+                "encoding_urls": null,
+                "hash": "03f4ef27b84947caac6e1293a2c86324",
+                "isEncoding": false,
+                "mime": "image",
+                "url": "https://ascribe0.s3.amazonaws.com/local/admin@makx.com/elmo/digitalworkfile/elmo.jpg",
+                "url_safe": "https://ascribe0.s3.amazonaws.com/local%2Fadmin%40makx.com%2Felmo%2Fdigitalworkfile%2Felmo.jpg",
+                "user": "admin@makx.com"
+            },
+            "edition_number": 1,
+            "extra_data": {},
+            "hashAsAddress": "1BoNDHXCNGXNnFMTKEDbL3YSigCD1741y",
+            "id": 23,
+            "isActiveInPrize": false,
+            "noteFromUser": null,
+            "num_editions": 3,
+            "other_data": null,
+            "owner": "admin@makx.com",
+            "ownershipHistory": [
+                [
+                    "Mar. 17, 2015, 14:43:37",
+                    "Registered by admin@makx.com"
+                ]
+            ],
+            "prizeDetails": null,
+            "ratingFromUser": null,
+            "thumbnail": "https://ascribe0.s3.amazonaws.com/local/admin@makx.com/elmo/thumbnailfile/elmo.jpg.png",
+            "title": "Makx Art",
+            "yearAndEdition_str": "2015, 1/3"
+        },
+        ...
+            ],
+    "success": true
+}
+```
 
 #### Retrieve a piece
 
+##### HTTP Request
+`GET https://www.ascribe.io/api/0.1/pieces/{bitcoin_ID_noPrefix}/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
 ##### Arguments
+Parameter | Description
+----------|------------
+bitcoin_ID_noPrefix | TODO
 
 ##### Example Request
+```shell
+curl http://localhost:8000/api/0.1/pieces/1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X/ \
+-H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
+```
 
 ##### Example Response
-
+```json
+{
+    "pieces": [
+        {
+            "artistNameOrID": "Makx",
+            "artist_name": "Makx",
+            "availableActions": "Can Transfer/Consign",
+            "bitcoin_ID_noPrefix": "1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X",
+            "btcOwnerAddress_noPrefix": "1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X",
+            "canAddToPieces": false,
+            "canConsign": true,
+            "canDelete": true,
+            "canEdit": true,
+            "canRemoveFromPieces": false,
+            "canShare": true,
+            "canTransfer": true,
+            "canView": true,
+            "consign_status": 0,
+            "consign_status_str": "-",
+            "consignee_name": null,
+            "date_created": "2015-01-01",
+            "datetime": null,
+            "datetime_registered": "2015-03-17T14:43:37.568Z",
+            "digital_work": {
+                "encoding_urls": null,
+                "hash": "03f4ef27b84947caac6e1293a2c86324",
+                "isEncoding": false,
+                "mime": "image",
+                "url": "https://ascribe0.s3.amazonaws.com/local/admin@makx.com/elmo/digitalworkfile/elmo.jpg",
+                "url_safe": "https://ascribe0.s3.amazonaws.com/local%2Fadmin%40makx.com%2Felmo%2Fdigitalworkfile%2Felmo.jpg",
+                "user": "admin@makx.com"
+            },
+            "edition_number": 1,
+            "extra_data": {},
+            "hashAsAddress": "1BoNDHXCNGXNnFMTKEDbL3YSigCD1741y",
+            "id": 23,
+            "isActiveInPrize": false,
+            "noteFromUser": null,
+            "num_editions": 3,
+            "other_data": null,
+            "owner": "admin@makx.com",
+            "ownershipHistory": [
+                [
+                    "Mar. 17, 2015, 14:43:37",
+                    "Registered by admin@makx.com"
+                ]
+            ],
+            "prizeDetails": null,
+            "ratingFromUser": null,
+            "thumbnail": "https://ascribe0.s3.amazonaws.com/local/admin@makx.com/elmo/thumbnailfile/elmo.jpg.png",
+            "title": "Makx Art",
+            "yearAndEdition_str": "2015, 1/3"
+        }
+    ],
+    "success": true
+}
+`
 #### Create a piece
 
 ##### Arguments
 
 ##### Example Request
-
+```shll
+curl -X POST http://localhost:8000/api/0.1/pieces/ \
+-H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' \
+-d file_url=https://ascribe0.s3.amazonaws.com/local/admin@makx.com/elmo/digitalworkfile/elmo.jpg \
+-d num_editions=3 \
+-d title='New Piece' \
+-d artist_name='New Artist' \
+-d date_created=2015
+```
 ##### Example Response
+```json
 
+```
 
 ### Users
 
@@ -122,25 +267,37 @@ curl -X POST http://localhost:8000/o/token/ \
 ##### Arguments
 
 ##### Example Request
+```shell
 
+```
 ##### Example Response
+```json
 
+```
 #### Retrieve a user
 
 ##### Arguments
 
 ##### Example Request
+```shell
 
+```
 ##### Example Response
+```json
 
+```
 #### Create a user
 
 ##### Arguments
 
 ##### Example Request
+```shell
 
+```
 ##### Example Response
+```json
 
+```
 
 ### Jobs
 
@@ -149,16 +306,23 @@ curl -X POST http://localhost:8000/o/token/ \
 ##### Arguments
 
 ##### Example Request
+```shell
 
+```
 ##### Example Response
+```json
 
+```
 
 #### Retrieve a job
 
 ##### Arguments
 
 ##### Example Request
+```shell
 
+```
 ##### Example Response
+```json
 
-
+```
