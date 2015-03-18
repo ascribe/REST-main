@@ -14,6 +14,7 @@ Main RESTful API for ascribe ownership web service. https://www.ascribe.io
     - [Pieces](#pieces)
     - [Users](#users)
     - [Jobs](#jobs)
+    - [Transfer](#transfer)
 
 ## API Documentation
 
@@ -522,3 +523,40 @@ curl http://localhost:8000/api/0.1/jobs/16/ \
     "success": true
 }
 ```
+
+### Transfer
+
+#### Transfer a piece
+
+##### HTTP Request
+`POST https://www.ascribe.io/api/0.1/transfer/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+bitcoin_ID_noPrefix | TODO
+transferee_name | TODO
+password | TODO
+transfer_message | TODO
+
+##### Example Request
+```shell
+curl -X POST http://localhost:8000/api/0.1/transfer/ \
+    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' \
+    -d bitcoin_ID_noPrefix=157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W \
+    -d transferee_name=new_user@makx.com \
+    -d password=mypassword \
+    -d transfer_message='I would like to transfer this piece to you'
+```
+##### Example Response
+```json
+{
+    "notification": "You have successfully transfered \"New Piece\" to new_user@makx.com.",
+    "success": true
+}
+```
+
+
