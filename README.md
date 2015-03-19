@@ -15,6 +15,7 @@ Main RESTful API for ascribe ownership web service. https://www.ascribe.io
     - [Users](#users)
     - [Jobs](#jobs)
     - [Transfer](#transfer)
+    - [Consign](#consign)
 
 ## API Documentation
 
@@ -555,6 +556,40 @@ curl -X POST http://localhost:8000/api/0.1/transfer/ \
 ```json
 {
     "notification": "You have successfully transfered \"New Piece\" to new_user@makx.com.",
+    "success": true
+}
+```
+### Consign
+
+#### Consign a Piece
+
+##### HTTP Request
+`POST https://www.ascribe.io/api/0.1/consign/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+bitcoin_ID_noPrefix | TODO
+consignee_name | TODO
+password | TODO
+consign_message | TODO
+
+##### Example Request
+```shell
+curl -X POST http://localhost:8000/api/0.1/consign/ \
+    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' \
+    -d bitcoin_ID_noPrefix=1FSHWN12K2VZBHJYaAWfcDa63zrBozqPKY \
+    -d consignee_name=new_user@makx.com \
+    -d password=mypassword \
+    -d transfer_message='I would like to consign this piece to you'
+```
+##### Example Response
+```json
+{
+    "notification": "You have successfully consigned \"New Piece\" to new_user@makx.com, pending their confirmation.",
     "success": true
 }
 ```
