@@ -9,14 +9,10 @@ Main RESTful API for ascribe ownership web service. https://www.ascribe.io
     - [Overview](#overview)
     - [Authorization Flow](#authorization-flow)
     - [Register your Application or Marketplace](#register-your-application-or-marketplace)
-    - [Request Access Token](#request-access-token)
 - [Methods](#methods)
     - [Pieces](#pieces)
-    - [Users](#users)
-    - [Jobs](#jobs)
     - [Transfer](#transfer)
-    - [Consign](#consign)
-
+    
 ## API Documentation
 
 ### Overview
