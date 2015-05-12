@@ -102,7 +102,7 @@ curl https://www.ascribe.io/api/pieces/
 ##### Arguments
 Parameter | Description
 ----------|------------
-bitcoin_ID |  The ID as the registration address of the artwork
+bitcoin_ID | `<string>` The ID as the registration address of the artwork
 
 ##### Example Request
 ```shell
@@ -180,11 +180,11 @@ curl https://www.ascribe.io/api/pieces/1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X/
 ##### Arguments
 Parameter | Description
 ----------|------------
-file_url | Required
-title | Required
-artist_name | Required
-asc-hash-md5 | Optional
-
+file_url | `<url>` The url of the digital file
+title | `<string>`  The title of the artwork
+artist_name | `<string>` The artist name
+date_created | `(optional) <YYYY-MM-DD>` The creation date
+num_editions | `(optional) <int>` The number of editions (will create as many pieces)
 
 ##### Example Request
 ```shell
@@ -259,7 +259,7 @@ curl -X POST http://www.ascribe.io/api/pieces/
 #### Transfer a piece
 
 ##### HTTP Request
-`POST https://www.ascribe.io/api/0.1/transfer/`
+`POST https://www.ascribe.io/api/ownership/transfers/`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -267,10 +267,10 @@ curl -X POST http://www.ascribe.io/api/pieces/
 ##### Arguments
 Parameter | Description
 ----------|------------
-bitcoin_ID_noPrefix | TODO
-transferee_name | TODO
-password | TODO
-transfer_message | TODO
+bitcoin_ID | `<string>` The ID as the registration address of the artwork
+transferee | `<email>` The email of the new owner
+password | `<string>` Your ascribe password
+transfer_message | `(optional) <string>` Additional message
 
 ##### Example Request
 ```shell
@@ -288,39 +288,6 @@ curl -X POST http://localhost:8000/api/0.1/transfer/ \
     "success": true
 }
 ```
-### Consign
 
-#### Consign a Piece
-
-##### HTTP Request
-`POST https://www.ascribe.io/api/0.1/consign/`
-
-##### HTTP Headers
-`Authorization: Bearer <access_token>`
-
-##### Arguments
-Parameter | Description
-----------|------------
-bitcoin_ID_noPrefix | TODO
-consignee_name | TODO
-password | TODO
-consign_message | TODO
-
-##### Example Request
-```shell
-curl -X POST http://localhost:8000/api/0.1/consign/ \
-    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' \
-    -d bitcoin_ID_noPrefix=1FSHWN12K2VZBHJYaAWfcDa63zrBozqPKY \
-    -d consignee_name=new_user@makx.com \
-    -d password=mypassword \
-    -d transfer_message='I would like to consign this piece to you'
-```
-##### Example Response
-```json
-{
-    "notification": "You have successfully consigned \"New Piece\" to new_user@makx.com, pending their confirmation.",
-    "success": true
-}
-```
 
 
