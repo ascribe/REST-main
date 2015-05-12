@@ -70,24 +70,23 @@ curl https://www.ascribe.io/api/pieces/
 
 ```json
 {
-    "pieces": [
-        {
-            "artistNameOrID": "Makx",
-            "artist_name": "Makx",
-            "availableActions": "Can Transfer/Consign",
-            "bitcoin_ID_noPrefix": "1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X",
-            "date_created": "2015-01-01",
-            "edition_number": 1,
-            "isActiveInPrize": false,
-            "num_editions": 1,
-            "ratingFromUser": null,
-            "thumbnail": "https://ascribe0.s3.amazonaws.com/local/admin@makx.com/elmo/thumbnailfile/elmo.jpg.png",
-            "title": "Makx Art",
-            "yearAndEdition_str": "2015, 1/3"
-        },
-        ...
-            ],
-    "success": true
+  "success": true,
+  "pieces": [
+    {
+      "title": "Elmo",
+      "artist_name": "New Artist",
+      "edition_number": 1,
+      "num_editions": 1,
+      "bitcoin_ID_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
+      "yearAndEdition_str": "2015, 1/1",
+      "artistNameOrID": "New Artist",
+      "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo/thumbnail/elmo.jpg.png",
+      "availableActions": "Transfer/Consign/Loan",
+      "isActiveInPrize": false,
+      "ratingFromUser": null
+    },
+    ...
+  ]
 }
 ```
 
@@ -113,59 +112,58 @@ curl https://www.ascribe.io/api/pieces/1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X/
 ##### Example Response
 ```json
 {
-    "pieces": [
-        {
-            "artistNameOrID": "Makx",
-            "artist_name": "Makx",
-            "availableActions": "Can Transfer/Consign",
-            "bitcoin_ID_noPrefix": "1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X",
-            "btcOwnerAddress_noPrefix": "1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X",
-            "canAddToPieces": false,
-            "canConsign": true,
-            "canDelete": true,
-            "canEdit": true,
-            "canRemoveFromPieces": false,
-            "canShare": true,
-            "canTransfer": true,
-            "canView": true,
-            "consign_status": 0,
-            "consign_status_str": "-",
-            "consignee_name": null,
-            "date_created": "2015-01-01",
-            "datetime": null,
-            "datetime_registered": "2015-03-17T14:43:37.568Z",
-            "digital_work": {
-                "encoding_urls": null,
-                "hash": "03f4ef27b84947caac6e1293a2c86324",
-                "isEncoding": false,
-                "mime": "image",
-                "url": "https://ascribe0.s3.amazonaws.com/local/admin@makx.com/elmo/digitalworkfile/elmo.jpg",
-                "url_safe": "https://ascribe0.s3.amazonaws.com/local%2Fadmin%40makx.com%2Felmo%2Fdigitalworkfile%2Felmo.jpg",
-                "user": "admin@makx.com"
-            },
-            "edition_number": 1,
-            "extra_data": {},
-            "hashAsAddress": "1BoNDHXCNGXNnFMTKEDbL3YSigCD1741y",
-            "id": 23,
-            "isActiveInPrize": false,
-            "noteFromUser": null,
-            "num_editions": 3,
-            "other_data": null,
-            "owner": "admin@makx.com",
-            "ownershipHistory": [
-                [
-                    "Mar. 17, 2015, 14:43:37",
-                    "Registered by admin@makx.com"
-                ]
-            ],
-            "prizeDetails": null,
-            "ratingFromUser": null,
-            "thumbnail": "https://ascribe0.s3.amazonaws.com/local/admin@makx.com/elmo/thumbnailfile/elmo.jpg.png",
-            "title": "Makx Art",
-            "yearAndEdition_str": "2015, 1/3"
-        }
+  "piece": {
+    "title": "Elmo",
+    "artist_name": "New Artist",
+    "edition_number": 1,
+    "num_editions": 1,
+    "bitcoin_ID_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
+    "yearAndEdition_str": "2015, 1/1",
+    "artistNameOrID": "New Artist",
+    "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo/thumbnail/elmo.jpg.png",
+    "availableActions": "Transfer/Consign/Loan",
+    "isActiveInPrize": false,
+    "ratingFromUser": null,
+    "hashAsAddress": "16NBKk6HjnzHC48qXxq15XnAgbzK56T7A2",
+    "btcOwnerAddress_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
+    "owner": "makx",
+    "ownershipHistory": [
+      [
+        "May. 12, 2015, 09:56:29",
+        "Registered by makx"
+      ]
     ],
-    "success": true
+    "loanHistory": [],
+    "datetime_registered": "2015-05-12T09:56:29.766455Z",
+    "date_created": "2015-05-12",
+    "extra_data": {},
+    "digital_work": {
+      "url": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo/digitalwork/elmo.jpg",
+      "url_safe": "https://d1qjsxua1o9x03.cloudfront.net/local%2Fmakx%2Felmo%2Fdigitalwork%2Felmo.jpg",
+      "mime": "image",
+      "hash": "03f4ef27b84947caac6e1293a2c86324",
+      "encoding_urls": null,
+      "isEncoding": 0
+    },
+    "coa": null,
+    "other_data": null,
+    "canEdit": true,
+    "canTransfer": true,
+    "canConsign": true,
+    "canLoan": true,
+    "canView": true,
+    "canDownload": true,
+    "canShare": true,
+    "canAddToPieces": false,
+    "canRemoveFromPieces": false,
+    "canDelete": true,
+    "consign_status": 0,
+    "consign_status_str": "-",
+    "consignee_name": null,
+    "noteFromUser": null,
+    "prizeDetails": null
+  },
+  "success": true
 }
 ```
 #### Create a piece
@@ -189,67 +187,67 @@ num_editions | `(optional) <int>` The number of editions (will create as many pi
 ##### Example Request
 ```shell
 curl -X POST http://www.ascribe.io/api/pieces/ 
-     -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' \
-     -d file_url=https://ascribe0.s3.amazonaws.com/local/admin@makx.com/elmo/digitalworkfile/elmo.jpg \
-     -d title='New Piece' \
+     -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
+     -d file_url=https://ascribe0.s3.amazonaws.com/local/admin@makx.com/elmo/digitalworkfile/elmo.jpg 
+     -d title='New Piece' 
      -d artist_name='New Artist'
 ```
 ##### Example Response
 ```json
 {
-    "piece": [
-        {
-            "artistNameOrID": "New Artist",
-            "artist_name": "New Artist",
-            "availableActions": "Can Transfer/Consign",
-            "bitcoin_ID_noPrefix": "12R8YHC43HqKV3eAvvuweWymJbszedNaSc",
-            "btcOwnerAddress_noPrefix": "12R8YHC43HqKV3eAvvuweWymJbszedNaSc",
-            "canAddToPieces": false,
-            "canConsign": true,
-            "canDelete": true,
-            "canEdit": true,
-            "canRemoveFromPieces": false,
-            "canShare": true,
-            "canTransfer": true,
-            "canView": true,
-            "consign_status": 0,
-            "consign_status_str": "-",
-            "consignee_name": null,
-            "date_created": "2015-03-18",
-            "datetime": null,
-            "datetime_registered": "2015-03-18T09:11:32.632Z",
-            "digital_work": {
-                "encoding_urls": null,
-                "hash": "03f4ef27b84947caac6e1293a2c86324",
-                "isEncoding": false,
-                "mime": "image",
-                "url": "https://ascribe0.s3.amazonaws.com/media/digital_works/admin@makx.com/elmo.jpg",
-                "url_safe": "https://ascribe0.s3.amazonaws.com/media%2Fdigital_works%2Fadmin%40makx.com%2Felmo.jpg",
-                "user": "admin@makx.com"
-            },
-            "edition_number": 1,
-            "extra_data": {},
-            "hashAsAddress": "14CLRw39vW2WbcK5WMSqpfgog2nxKiGWth",
-            "id": 43,
-            "isActiveInPrize": false,
-            "noteFromUser": null,
-            "num_editions": 1,
-            "other_data": null,
-            "owner": "admin@makx.com",
-            "ownershipHistory": [
-                [
-                    "Mar. 18, 2015, 09:11:32",
-                    "Registered by admin@makx.com"
-                ]
-            ],
-            "prizeDetails": null,
-            "ratingFromUser": null,
-            "thumbnail": "https://ascribe0.s3.amazonaws.com/media/thumbnails/ascribe_spiral.png",
-            "title": "New Piece",
-            "yearAndEdition_str": "2015, 1/1"
-        }
+  "notification": "You have successfully registered \"Elmo\" by New Artist, 1 editions.",
+  "piece": {
+    "title": "Elmo",
+    "artist_name": "New Artist",
+    "edition_number": 1,
+    "num_editions": 1,
+    "bitcoin_ID_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
+    "yearAndEdition_str": "2015, 1/1",
+    "artistNameOrID": "New Artist",
+    "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo/thumbnail/elmo.jpg.png",
+    "availableActions": "Transfer/Consign/Loan",
+    "isActiveInPrize": false,
+    "ratingFromUser": null,
+    "hashAsAddress": "16NBKk6HjnzHC48qXxq15XnAgbzK56T7A2",
+    "btcOwnerAddress_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
+    "owner": "makx",
+    "ownershipHistory": [
+      [
+        "May. 12, 2015, 09:56:29",
+        "Registered by makx"
+      ]
     ],
-    "success": true
+    "loanHistory": [],
+    "datetime_registered": "2015-05-12T09:56:29.766455Z",
+    "date_created": "2015-05-12",
+    "extra_data": {},
+    "digital_work": {
+      "url": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo/digitalwork/elmo.jpg",
+      "url_safe": "https://d1qjsxua1o9x03.cloudfront.net/local%2Fmakx%2Felmo%2Fdigitalwork%2Felmo.jpg",
+      "mime": "image",
+      "hash": "03f4ef27b84947caac6e1293a2c86324",
+      "encoding_urls": null,
+      "isEncoding": 0
+    },
+    "coa": null,
+    "other_data": null,
+    "canEdit": true,
+    "canTransfer": true,
+    "canConsign": true,
+    "canLoan": true,
+    "canView": true,
+    "canDownload": true,
+    "canShare": true,
+    "canAddToPieces": false,
+    "canRemoveFromPieces": false,
+    "canDelete": true,
+    "consign_status": 0,
+    "consign_status_str": "-",
+    "consignee_name": null,
+    "noteFromUser": null,
+    "prizeDetails": null
+  },
+  "success": true
 }
 ```
 
@@ -274,29 +272,162 @@ transfer_message | `(optional) <string>` Additional message
 
 ##### Example Request
 ```shell
-curl -X POST http://localhost:8000/api/0.1/transfer/ \
-    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' \
-    -d bitcoin_ID_noPrefix=157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W \
-    -d transferee_name=new_user@makx.com \
-    -d password=mypassword \
+curl -X POST https://www.ascribe.io/api/ownership/transfers/ 
+    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
+    -d bitcoin_ID=157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W 
+    -d transferee=new_user@makx.com 
+    -d password=mypassword 
     -d transfer_message='I would like to transfer this piece to you'
 ```
 ##### Example Response
 ```json
 {
-    "notification": "You have successfully transfered \"New Piece\" to new_user@makx.com.",
-    "success": true
+  "notification": "You have successfully transfered \"Elmo\" to foo.",
+  "success": true
 }
 ```
-An error might occur when trying to transfer a piece that's not yours:
+An error will occur when trying to transfer a piece that's not yours:
 ```json
 {
-    "errors": 
-    {
-        "bitcoin_ID_noPrefix":["You don't have the appropriate rights to transfer this piece"]
-    },
-    "success": false
+  "errors": {"bitcoin_ID_noPrefix": ["You don't have the appropriate rights to transfer this piece"]},
+  "success": false
 }
 ```
+#### List the transfers
 
+##### HTTP Request
+`GET https://www.ascribe.io/api/ownership/transfers/`
 
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Example Request
+```shell
+curl -X GET https://www.ascribe.io/api/ownership/transfers/ 
+    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
+```
+##### Example Response
+```json
+{
+  "transfers": [
+    {
+      "id": 4422,
+      "piece": {
+        "title": "Elmo",
+        "artist_name": "New Artist",
+        "edition_number": 1,
+        "num_editions": 1,
+        "bitcoin_ID_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
+        "yearAndEdition_str": "2015, 1/1",
+        "artistNameOrID": "New Artist",
+        "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo/thumbnail/elmo.jpg.png",
+        "availableActions": "View",
+        "isActiveInPrize": false,
+        "ratingFromUser": null
+      },
+      "type": "OwnershipTransfer",
+      "datetime": "2015-05-12T10:00:14.127345Z",
+      "btc_tx": null,
+      "new_owner": {
+        "id": 671,
+        "email": "foo@mailinator.com",
+        "username": "foo",
+        "prize_role": {
+          "type": "",
+          "prize": {"name": ""},
+          "round": null,
+          "canVote": false,
+          "canSubmit": false
+        }
+      },
+      "prev_owner": {
+        "id": 670,
+        "email": "makx@mailinator.com",
+        "username": "makx",
+        "prize_role": {
+          "type": "",
+          "prize": {"name": ""},
+          "round": null,
+          "canVote": false,
+          "canSubmit": false
+        }
+      },
+      "new_btc_address": null,
+      "prev_btc_address": null,
+      "status": null
+    },
+    ...
+  ],
+  "success": true
+}
+```
+#### Retrieve a transfer
+
+##### HTTP Request
+`GET https://www.ascribe.io/api/ownership/transfers/{id}/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+id | `<int>` The ID of the transfer
+
+##### Example Request
+```shell
+curl https://www.ascribe.io/api/ownership/transfers/4422/
+     -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
+```
+##### Example Response
+```json
+{
+  "transfer": {
+    "id": 4422,
+    "piece": {
+      "title": "Elmo",
+      "artist_name": "New Artist",
+      "edition_number": 1,
+      "num_editions": 1,
+      "bitcoin_ID_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
+      "yearAndEdition_str": "2015, 1/1",
+      "artistNameOrID": "New Artist",
+      "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo/thumbnail/elmo.jpg.png",
+      "availableActions": "View",
+      "isActiveInPrize": false,
+      "ratingFromUser": null
+    },
+    "type": "OwnershipTransfer",
+    "datetime": "2015-05-12T10:00:14.127345Z",
+    "btc_tx": null,
+    "new_owner": {
+      "id": 671,
+      "email": "foo@mailinator.com",
+      "username": "foo",
+      "prize_role": {
+        "type": "",
+        "prize": {"name": ""},
+        "round": null,
+        "canVote": false,
+        "canSubmit": false
+      }
+    },
+    "prev_owner": {
+      "id": 670,
+      "email": "makx@mailinator.com",
+      "username": "makx",
+      "prize_role": {
+        "type": "",
+        "prize": {"name": ""},
+        "round": null,
+        "canVote": false,
+        "canSubmit": false
+      }
+    },
+    "new_btc_address": null,
+    "prev_btc_address": null,
+    "status": null
+  },
+  "success": true
+}
+```
