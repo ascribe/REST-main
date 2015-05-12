@@ -288,6 +288,15 @@ curl -X POST http://localhost:8000/api/0.1/transfer/ \
     "success": true
 }
 ```
-
+An error might occur when trying to transfer a piece that's not yours:
+```json
+{
+    "errors": 
+    {
+        "bitcoin_ID_noPrefix":["You don't have the appropriate rights to transfer this piece"]
+    },
+    "success": false
+}
+```
 
 
