@@ -168,6 +168,10 @@ curl https://www.ascribe.io/api/pieces/1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X/
 ```
 #### Create a piece
 
+When creating a piece with our API, the piece is automatically registered on the blockchain. For marketplaces that 
+act as a middle-man for registering pieces on ascribe.io, it is possible to register the piece as a consignee (someone 
+that has the right to sell the piece on the owner's behalf).
+
 ##### HTTP Request
 `POST https://www.ascribe.io/api/pieces/`
 
@@ -183,6 +187,7 @@ title | `<string>`  The title of the artwork
 artist_name | `<string>` The artist name
 date_created | `(optional) <YYYY-MM-DD>` The creation date
 num_editions | `(optional) <int>` The number of editions (will create as many pieces)
+consign | `(optional) <boolean>` Set to True if the marketplace acts as a consignee
 
 ##### Example Request
 ```shell
