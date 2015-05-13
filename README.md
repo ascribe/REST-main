@@ -291,7 +291,7 @@ curl -X DELETE http://www.ascribe.io/api/pieces/{bitcoin_ID_noPrefix}/
   "success": true
 }
 ```
-### Registration
+### Register
 
 #### Register a piece
 
@@ -996,4 +996,127 @@ page_size | `(optional) <int>` Number of results per page
 ##### Arguments
 Parameter | Description
 ----------|------------
-id | `<int>` The ID of the consignment
+id | `<int>` The ID of the unconsignment
+
+
+### Loan
+When loaning a piece, you assign the right to the consignee to display the piece in public for a limited period of time. 
+Once accepted by the loanee, the loan will change state and is recorded on the blockchain. 
+
+#### Loan a piece
+Action taken by the owner. Send a request to the loanee to accept the loan.
+
+##### HTTP Request
+`POST https://www.ascribe.io/api/ownership/loans/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+bitcoin_ID_noPrefix | `<string>` The ID as the registration address of the artwork
+loanee | `<email>` The email of the loanee
+password | `<string>` Your ascribe password
+startdate | `<YYYY-MM-DD>` The start date of the loan
+enddate | `<YYYY-MM-DD>` The end date of the loan
+loan_message | `(optional) <string>` Additional message
+gallery_name | `(optional) <string>` Name of the gallery where the piece will be displayed
+
+##### Example Request
+```shell
+curl -X POST https://www.ascribe.io/api/ownership/loans/ 
+    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
+    -d bitcoin_ID_noPrefix=157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W 
+    -d loanee=foo@mailinator.com 
+    -d password=mypassword 
+    -d startdate=2015-05-29
+    -d enddate=2015-06-01
+    -d loan_message='I loan this piece to you'
+```
+##### Example Response
+```json
+{
+  "notification": "You have successfully loaned \"Elmo\" to foo, pending their confirmation.",
+  "success": true
+}
+```
+An error will occur when trying to loan a piece to someone that is already loans the piece:
+```json
+{
+  "errors": {"non_field_errors": ["The loanee already has access to the piece"]},
+  "success": false
+}
+```
+
+#### Confirm/deny a loan
+When someone loans a piece to you, you receive a loan request. 
+You can confirm or deny the loan. 
+
+##### HTTP Request
+`POST https://www.ascribe.io/api/ownership/loans/confirm/`
+`POST https://www.ascribe.io/api/ownership/loans/deny/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+bitcoin_ID_noPrefix | `<string>` The ID as the registration address of the artwork
+
+
+##### Example Confirm Request
+```shell
+curl -X POST https://www.ascribe.io/api/ownership/loans/confirm/ 
+    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
+    -d bitcoin_ID_noPrefix=1JbdWghbB21CtQazxNu4LqNFJnw2uB7Fe4
+```
+##### Example Confirm Response
+```json
+{
+  "notification": "You have succesfully confirmed the loan of \"Elmo\" by New Artist, 1 editions.",
+  "success": true
+}
+```
+
+##### Example Deny Request
+```shell
+curl -X POST https://www.ascribe.io/api/ownership/loans/deny/ 
+    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
+    -d bitcoin_ID_noPrefix=1JbdWghbB21CtQazxNu4LqNFJnw2uB7Fe4
+```
+##### Example Deny Response
+```json
+{
+  "notification": "You have denied the loan of \"Elmo\" by New Artist, 1 editions.",
+  "success": true
+}
+```
+
+#### List the loans
+
+##### HTTP Request
+`GET https://www.ascribe.io/api/ownership/loans/?page={number}&page_size={number}
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+page | `(optional) <int>` The pagination number
+page_size | `(optional) <int>` Number of results per page
+
+#### Retrieve a consignment
+
+##### HTTP Request
+`GET https://www.ascribe.io/api/ownership/loans/{id}/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+id | `<int>` The ID of the loan
