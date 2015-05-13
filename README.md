@@ -15,6 +15,7 @@ Main RESTful API for ascribe ownership web service. https://www.ascribe.io
     - [Transfer](#transfer)
     - [Consign](#consign)
     - [Unconsign](#unconsign)
+    - [Loan](#loan)
     
 ## API Documentation
 
