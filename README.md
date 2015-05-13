@@ -23,6 +23,7 @@ Main RESTful API for ascribe ownership web service. https://www.ascribe.io
 
 ### Overview
 Integration has these actions:
+
 1. Register your app/marketplace and request an access token. This is a one time action.
 2. Register a piece.
 3. Check the status of a piece.
@@ -30,7 +31,7 @@ Integration has these actions:
 ### Authorization Flow
 Let's call the marketplace Makx.
 
-As authentication is used to connect transfer data between Makx and ascribe, we
+As authentication is used to connect and transfer data between Makx and ascribe, we
 use an encrypted connection (HTTPS).
 
 Ascribe authorizes applications via tokens. Each token is an alphanumeric that
@@ -39,9 +40,7 @@ encodes the following information:
 - The ID of the user who granted access to personal data.
 - A set of actions available to the application.
 
-<div style="text-align:center" markdown="1">
 ![Authorization Flow PNG](https://s3-us-west-2.amazonaws.com/ascribe0/public/rest_doc/ascribe_api_workflow.png)
-</div>
 
 ### Register your Application or Marketplace
 The developer (e.g. admin@makx.com) should have an [ascribe account](https://www.ascribe.io), 
