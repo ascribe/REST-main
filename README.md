@@ -11,7 +11,10 @@ Main RESTful API for ascribe ownership web service. https://www.ascribe.io
     - [Register your Application or Marketplace](#register-your-application-or-marketplace)
 - [Methods](#methods)
     - [Pieces](#pieces)
+    - [Register](#register)
     - [Transfer](#transfer)
+    - [Consign](#consign)
+    - [Unconsign](#unconsign)
     
 ## API Documentation
 
