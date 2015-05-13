@@ -21,6 +21,7 @@ Main RESTful API for ascribe ownership web service. https://www.ascribe.io
 
 ### Overview
 Integration has these actions:
+
 1. Register your app/marketplace and request an access token. This is a one time action.
 2. Register a piece.
 3. Check the status of a piece.
@@ -28,7 +29,7 @@ Integration has these actions:
 ### Authorization Flow
 Let's call the marketplace Makx.
 
-As authentication is used to connect transfer data between Makx and ascribe, we
+As authentication is used to connect and transfer data between Makx and ascribe, we
 use an encrypted connection (HTTPS).
 
 Ascribe authorizes applications via tokens. Each token is an alphanumeric that
