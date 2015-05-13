@@ -9,13 +9,15 @@ Main RESTful API for ascribe ownership web service. https://www.ascribe.io
     - [Overview](#overview)
     - [Authorization Flow](#authorization-flow)
     - [Register your Application or Marketplace](#register-your-application-or-marketplace)
-- [Methods](#methods)
+- [SPOOL API](#spool-api)
     - [Pieces](#pieces)
     - [Register](#register)
     - [Transfer](#transfer)
     - [Consign](#consign)
     - [Unconsign](#unconsign)
     - [Loan](#loan)
+- [Similarity Search API](similarity-search-api)
+    - [Photos](#photos)
     
 ## API Documentation
 
@@ -48,7 +50,10 @@ the application or marketplace with following fields:
 
 The user can then create a token of type 'Bearer'.
 
-## Methods
+## SPOOL API
+
+SPOOL is the Secure Public Online Ownership Ledger. 
+An in-depth specification of the protocol can be found on [https://github.com/ascribe/spool](https://github.com/ascribe/spool) 
 
 ### Pieces
 
@@ -1122,3 +1127,99 @@ page_size | `(optional) <int>` Number of results per page
 Parameter | Description
 ----------|------------
 id | `<int>` The ID of the loan
+
+
+## Similarity Search API
+
+### Photos
+Match images from the web against images in the photos marketplace.
+Try it in the browser at [labs.ascribe.io/similarity/photos](http://labs.ascribe.io/similarity/photos/).
+
+#### Version
+0.1 Beta
+
+#### Roadmap
+Features on the roadmap:
+
+ * Rotation
+ * Mirroring
+ * Inversion is implemented but not yet turned on
+ * Cropping resilience will be improved
+
+#### Basics
+The ```dist``` field indicates how closely matched the images are. 
+A perfect match has a ```dist``` value of ```0.0```.
+
+
+##### HTTP Request
+`GET http://labs.ascribe.io/similarity/photos/api/search/?image_url=<url>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+image_url | `<string>` The url of the image. Should be encoded.
+
+##### Example Request
+```shell
+curl http://labs.ascribe.io/similarity/photos/api/search/
+    -d image_url=http%3A%2F%2Fcdn...com%2Fthumb%2F640%2F480%2....jpg
+```
+##### Example Response
+Status code 200 and an array of ```{dist, path, id}``` image descriptions. In case of error, the returned JSON will contain the key ``error``
+
+<pre>
+{
+    "result": [
+        {
+            "path": "http://www.photos.com/img1.jpg",
+            "dist": 0,
+            "id": 12
+        },
+        {
+            "path": "http://www.photos.com/img2.jpg",
+            "dist": 0.43739087511375,
+            "id": 528492
+        },
+        {
+            "path": "http://www.photos.com/img3.jpg",
+            "dist": 0.4438784282276083,
+            "id": 27482264
+        },
+        {
+            "path": "http://www.photos.com/img4.jpg",
+            "dist": 0.4500463733919593,
+            "id": 27550153
+        },
+        {
+            "path": "http://www.photos.com/img5.jpg",
+            "dist": 0.46666245188890754,
+            "id": 22654175
+        },
+        {
+            "path": "http://www.photos.com/img6.jpg",
+            "dist": 0.4687795429136797,
+            "id": 30254571
+        },
+        {
+            "path": "http://www.photos.com/img7.jpg",
+            "dist": 0.4719155672668924,
+            "id": 24884288
+        },
+        {
+            "path": "http://www.photos.com/img8.jpg",
+            "dist": 0.4821427959813869,
+            "id": 14152888
+        }
+    ]
+}
+</pre>
+
+If an error occurs, the JSON will contain the key ``error``.
+<pre>
+{
+    "error": "Timeout downloading the image"
+}
+</pre>
+
+
+
