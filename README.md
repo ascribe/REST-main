@@ -47,6 +47,96 @@ The user can then create a token of type 'Bearer'.
 
 ### Pieces
 
+#### Create a piece
+
+When creating a piece with our API, the piece is automatically registered on the blockchain. For marketplaces that 
+act as a middle-man for registering pieces on ascribe.io, it is possible to register the piece as a consignee (someone 
+that has the right to sell the piece on the owner's behalf).
+
+##### HTTP Request
+`POST https://www.ascribe.io/api/pieces/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+
+##### Arguments
+Parameter | Description
+----------|------------
+file_url | `<url>` The url of the digital file
+title | `<string>`  The title of the artwork
+artist_name | `<string>` The artist name
+date_created | `(optional) <YYYY-MM-DD>` The creation date
+num_editions | `(optional) <int>` The number of editions (will create as many pieces)
+consign | `(optional) <boolean>` Set to True if the marketplace acts as a consignee
+
+##### Example Request
+```shell
+curl -X POST http://www.ascribe.io/api/pieces/ 
+     -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
+     -d file_url=https://ascribe0.s3.amazonaws.com/local/admin@makx.com/elmo/digitalworkfile/elmo.jpg 
+     -d title='New Piece' 
+     -d artist_name='New Artist'
+```
+##### Example Response
+```json
+{
+  "notification": "You have successfully registered \"Elmo\" by New Artist, 1 editions.",
+  "piece": {
+    "title": "Elmo",
+    "artist_name": "New Artist",
+    "edition_number": 1,
+    "num_editions": 1,
+    "bitcoin_ID_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
+    "yearAndEdition_str": "2015, 1/1",
+    "artistNameOrID": "New Artist",
+    "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo/thumbnail/elmo.jpg.png",
+    "availableActions": "Transfer/Consign/Loan",
+    "isActiveInPrize": false,
+    "ratingFromUser": null,
+    "hashAsAddress": "16NBKk6HjnzHC48qXxq15XnAgbzK56T7A2",
+    "btcOwnerAddress_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
+    "owner": "makx",
+    "ownershipHistory": [
+      [
+        "May. 12, 2015, 09:56:29",
+        "Registered by makx"
+      ]
+    ],
+    "loanHistory": [],
+    "datetime_registered": "2015-05-12T09:56:29.766455Z",
+    "date_created": "2015-05-12",
+    "extra_data": {},
+    "digital_work": {
+      "url": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo/digitalwork/elmo.jpg",
+      "url_safe": "https://d1qjsxua1o9x03.cloudfront.net/local%2Fmakx%2Felmo%2Fdigitalwork%2Felmo.jpg",
+      "mime": "image",
+      "hash": "03f4ef27b84947caac6e1293a2c86324",
+      "encoding_urls": null,
+      "isEncoding": 0
+    },
+    "coa": null,
+    "other_data": null,
+    "canEdit": true,
+    "canTransfer": true,
+    "canConsign": true,
+    "canLoan": true,
+    "canView": true,
+    "canDownload": true,
+    "canShare": true,
+    "canAddToPieces": false,
+    "canRemoveFromPieces": false,
+    "canDelete": true,
+    "consign_status": 0,
+    "consign_status_str": "-",
+    "consignee_name": null,
+    "noteFromUser": null,
+    "prizeDetails": null
+  },
+  "success": true
+}
+```
+
 #### List all pieces
 
 ##### HTTP Request
@@ -177,96 +267,6 @@ curl https://www.ascribe.io/api/pieces/1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X/
   "success": true
 }
 ```
-#### Create a piece
-
-When creating a piece with our API, the piece is automatically registered on the blockchain. For marketplaces that 
-act as a middle-man for registering pieces on ascribe.io, it is possible to register the piece as a consignee (someone 
-that has the right to sell the piece on the owner's behalf).
-
-##### HTTP Request
-`POST https://www.ascribe.io/api/pieces/`
-
-##### HTTP Headers
-`Authorization: Bearer <access_token>`
-
-
-##### Arguments
-Parameter | Description
-----------|------------
-file_url | `<url>` The url of the digital file
-title | `<string>`  The title of the artwork
-artist_name | `<string>` The artist name
-date_created | `(optional) <YYYY-MM-DD>` The creation date
-num_editions | `(optional) <int>` The number of editions (will create as many pieces)
-consign | `(optional) <boolean>` Set to True if the marketplace acts as a consignee
-
-##### Example Request
-```shell
-curl -X POST http://www.ascribe.io/api/pieces/ 
-     -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
-     -d file_url=https://ascribe0.s3.amazonaws.com/local/admin@makx.com/elmo/digitalworkfile/elmo.jpg 
-     -d title='New Piece' 
-     -d artist_name='New Artist'
-```
-##### Example Response
-```json
-{
-  "notification": "You have successfully registered \"Elmo\" by New Artist, 1 editions.",
-  "piece": {
-    "title": "Elmo",
-    "artist_name": "New Artist",
-    "edition_number": 1,
-    "num_editions": 1,
-    "bitcoin_ID_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
-    "yearAndEdition_str": "2015, 1/1",
-    "artistNameOrID": "New Artist",
-    "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo/thumbnail/elmo.jpg.png",
-    "availableActions": "Transfer/Consign/Loan",
-    "isActiveInPrize": false,
-    "ratingFromUser": null,
-    "hashAsAddress": "16NBKk6HjnzHC48qXxq15XnAgbzK56T7A2",
-    "btcOwnerAddress_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
-    "owner": "makx",
-    "ownershipHistory": [
-      [
-        "May. 12, 2015, 09:56:29",
-        "Registered by makx"
-      ]
-    ],
-    "loanHistory": [],
-    "datetime_registered": "2015-05-12T09:56:29.766455Z",
-    "date_created": "2015-05-12",
-    "extra_data": {},
-    "digital_work": {
-      "url": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo/digitalwork/elmo.jpg",
-      "url_safe": "https://d1qjsxua1o9x03.cloudfront.net/local%2Fmakx%2Felmo%2Fdigitalwork%2Felmo.jpg",
-      "mime": "image",
-      "hash": "03f4ef27b84947caac6e1293a2c86324",
-      "encoding_urls": null,
-      "isEncoding": 0
-    },
-    "coa": null,
-    "other_data": null,
-    "canEdit": true,
-    "canTransfer": true,
-    "canConsign": true,
-    "canLoan": true,
-    "canView": true,
-    "canDownload": true,
-    "canShare": true,
-    "canAddToPieces": false,
-    "canRemoveFromPieces": false,
-    "canDelete": true,
-    "consign_status": 0,
-    "consign_status_str": "-",
-    "consignee_name": null,
-    "noteFromUser": null,
-    "prizeDetails": null
-  },
-  "success": true
-}
-```
-
 #### Delete a piece
 
 ##### HTTP Request
@@ -735,10 +735,12 @@ curl https://www.ascribe.io/api/ownership/transfers/4431/
 ```
 
 ### Consign
+When consigning a piece, you assign the right to the consignee to sell the piece on your behalve
+Hereto, one needs to send a request for consignment to the consignee. 
+Once accepted by the consignee, the consignment will change state and is recorded on the blockchain. 
 
 #### Consign a piece
-When consigning a piece, you send a request for consignment to the consignee. 
-Once accepted by the consignee, the consignment will change state and is recorded on the blockchain. 
+Send a request for consignment to the consignee.
 
 ##### HTTP Request
 `POST https://www.ascribe.io/api/ownership/consigns/`
@@ -857,3 +859,138 @@ Parameter | Description
 ----------|------------
 id | `<int>` The ID of the consignment
 
+### Unconsign
+When the consignee or owner decide that there is no more need to manage the sales of the piece. 
+The consignee can unconsign immediately, the owner needs to request the consignee for an unconsignment. 
+
+#### Unconsign a piece (or confirm an unconsignment request)
+Action to be taken by the consignee. He will no longer manage the sales of the piece.
+
+##### HTTP Request
+`POST https://www.ascribe.io/api/ownership/unconsigns/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+bitcoin_ID_noPrefix | `<string>` The ID as the registration address of the artwork
+password | `<string>` Your ascribe password
+unconsign_message | `(optional) <string>` Additional message
+
+##### Example Request
+```shell
+curl -X POST https://www.ascribe.io/api/ownership/unconsigns/ 
+    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
+    -d bitcoin_ID_noPrefix=157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W 
+    -d password=mypassword 
+    -d unconsign_message='I unconsign this piece from you. This is, I no longer manage the sales of your piece'
+```
+##### Example Response
+```json
+{
+  "notification": "You have successfully unconsigned \"Elmo\".",
+  "success": true
+}
+```
+An error will occur when trying to consign a piece that's not yours:
+```json
+{
+  "errors": {"bitcoin_ID_noPrefix": ["You don't have the appropriate rights to unconsign this piece"]},
+  "success": false
+}
+```
+#### Request an unconsignment
+Action to be taken by the owner. He requests the consignee to longer manage the sales of the piece.
+The consignee needs to confirm or deny the unconsignment.
+
+##### HTTP Request
+`POST https://www.ascribe.io/api/ownership/unconsigns/request/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+bitcoin_ID_noPrefix | `<string>` The ID as the registration address of the artwork
+unconsign_request_message | `(optional) <string>` Additional message
+
+##### Example Request
+```shell
+curl -X POST https://www.ascribe.io/api/ownership/unconsigns/request/
+    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
+    -d bitcoin_ID_noPrefix=157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W 
+    -d unconsign_request_message='I unconsign this piece from you. This is, I no longer manage the sales of your piece'
+```
+##### Example Response
+```json
+{
+  "notification": "You have requested foo@mailinator.com to unconsign \"Elmo\".",
+  "success": true
+}
+```
+An error will occur when trying to consign a piece that's not yours:
+```json
+{
+  "errors": {"non_field_errors": ["This piece is not consigned"]},
+  "success": false
+}
+```
+
+#### Deny a unconsignment
+Action taken by the consignee when the owner requests to unconsign the piece. 
+You can confirm or deny the unconsignment. The confirmation is treated above.
+
+##### HTTP Request
+`POST https://www.ascribe.io/api/ownership/unconsigns/deny/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+bitcoin_ID_noPrefix | `<string>` The ID as the registration address of the artwork
+
+
+##### Example Request
+```shell
+curl -X POST https://www.ascribe.io/api/ownership/unconsigns/deny/ 
+    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
+    -d bitcoin_ID_noPrefix=157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W
+```
+##### Example Response
+```json
+{
+  "notification": "You have denied unconsignment of Elmo by New Artist, edition 1.",
+  "success": true
+}
+```
+#### List the unconsignments
+
+##### HTTP Request
+`GET https://www.ascribe.io/api/ownership/unconsigns/?page={number}&page_size={number}
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+page | `(optional) <int>` The pagination number
+page_size | `(optional) <int>` Number of results per page
+
+#### Retrieve an unconsignment
+
+##### HTTP Request
+`GET https://www.ascribe.io/api/ownership/unconsigns/{id}/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+id | `<int>` The ID of the consignment
