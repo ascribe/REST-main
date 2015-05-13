@@ -104,7 +104,7 @@ curl https://www.ascribe.io/api/pieces/
 #### Retrieve a piece
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/pieces/{bitcoin_ID}/`
+`GET https://www.ascribe.io/api/pieces/{bitcoin_ID_noPrefix}/`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -112,7 +112,7 @@ curl https://www.ascribe.io/api/pieces/
 ##### Arguments
 Parameter | Description
 ----------|------------
-bitcoin_ID | `<string>` The ID as the registration address of the artwork
+bitcoin_ID_noPrefix | `<string>` The ID as the registration address of the artwork
 
 ##### Example Request
 ```shell
@@ -270,7 +270,7 @@ curl -X POST http://www.ascribe.io/api/pieces/
 #### Delete a piece
 
 ##### HTTP Request
-`DELETE https://www.ascribe.io/api/pieces/{bitcoin_ID}/`
+`DELETE https://www.ascribe.io/api/pieces/{bitcoin_ID_noPrefix}/`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -278,7 +278,7 @@ curl -X POST http://www.ascribe.io/api/pieces/
 
 ##### Example Request
 ```shell
-curl -X DELETE http://www.ascribe.io/api/pieces/{bitcoin_ID}/
+curl -X DELETE http://www.ascribe.io/api/pieces/{bitcoin_ID_noPrefix}/
      -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
 ```
 ##### Example Response
@@ -508,7 +508,7 @@ curl https://www.ascribe.io/api/ownership/registrations/4424/
 ##### Arguments
 Parameter | Description
 ----------|------------
-bitcoin_ID | `<string>` The ID as the registration address of the artwork
+bitcoin_ID_noPrefix | `<string>` The ID as the registration address of the artwork
 transferee | `<email>` The email of the new owner
 password | `<string>` Your ascribe password
 transfer_message | `(optional) <string>` Additional message
@@ -517,8 +517,8 @@ transfer_message | `(optional) <string>` Additional message
 ```shell
 curl -X POST https://www.ascribe.io/api/ownership/transfers/ 
     -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
-    -d bitcoin_ID=157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W 
-    -d transferee=new_user@makx.com 
+    -d bitcoin_ID_noPrefix=157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W 
+    -d transferee=foo@mailinator.com 
     -d password=mypassword 
     -d transfer_message='I would like to transfer this piece to you'
 ```
@@ -539,7 +539,7 @@ An error will occur when trying to transfer a piece that's not yours:
 #### List the transfers
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/ownership/transfers/?page={number}&page_size={number}&search={query}&ordering={order}`
+`GET https://www.ascribe.io/api/ownership/transfers/?page={number}&page_size={number}`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -549,8 +549,6 @@ Parameter | Description
 ----------|------------
 page | `(optional) <int>` The pagination number
 page_size | `(optional) <int>` Number of results per page
-search | `(optional) <string>` Search fields are `title`, `artist_name`
-ordering | `(optional) <string>` Ordering fields are `title` (reverse order with `-title`), `artist_name`, `datetime_created`, `edition_number`. 
 
 ##### Example Request
 ```shell
@@ -564,7 +562,7 @@ curl https://www.ascribe.io/api/ownership/transfers/
 ```json
 {
   "success": true,
-  "count": 2,
+  "count": 3,
   "next": null,
   "previous": null,
   "transfers": [
@@ -585,7 +583,30 @@ curl https://www.ascribe.io/api/ownership/transfers/
       },
       "type": "OwnershipTransfer",
       "datetime": "2015-05-12T10:00:14.127345Z",
-      "btc_tx": null,
+      "btc_tx": {
+        "datetime": "2015-05-13T08:22:42.744565Z",
+        "service": "<bitcoin.bitcoin_service.BitcoinDaemonMainnetService object at 0x7fb391027f10>",
+        "user": {
+          "id": 670,
+          "email": "makx@mailinator.com",
+          "username": "makx",
+          "prize_role": {
+            "type": "",
+            "prize": {"name": ""},
+            "round": null,
+            "canVote": false,
+            "canSubmit": false
+          }
+        },
+        "from_address": "2015/5/12/9/56/29/186988:146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
+        "inputs": "[{'output': '837617143e6a75f95a67c8923720e6637fd5b56e1828246d9a43cb5068722a1b:0', 'value': 10600}]",
+        "outputs": "[{'value': 600, 'address': u'1MFDsQnbHLVYnaqpSw8B5b6Us1rofXDYf7'}]",
+        "mining_fee": 10000,
+        "tx": "c60a93fbfeedb4ec549bd8df5903f05e852cfc9ac337132ecce690d23ba5bbf6",
+        "block_height": null,
+        "status": 1,
+        "spoolverb": "ASCRIBESPOOLTRANSFER"
+      },
       "new_owner": {
         "id": 671,
         "email": "foo@mailinator.com",
@@ -610,8 +631,8 @@ curl https://www.ascribe.io/api/ownership/transfers/
           "canSubmit": false
         }
       },
-      "new_btc_address": null,
-      "prev_btc_address": null,
+      "new_btc_address": "2015/5/13/8/22/42/27892:1MFDsQnbHLVYnaqpSw8B5b6Us1rofXDYf7",
+      "prev_btc_address": "2015/5/12/9/56/29/186988:146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
       "status": null
     },
     ...
@@ -634,30 +655,53 @@ id | `<int>` The ID of the transfer
 
 ##### Example Request
 ```shell
-curl https://www.ascribe.io/api/ownership/transfers/4422/
+curl https://www.ascribe.io/api/ownership/transfers/4431/
      -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
 ```
 ##### Example Response
 ```json
 {
   "transfer": {
-    "id": 4422,
+    "id": 4431,
     "piece": {
       "title": "Elmo",
       "artist_name": "New Artist",
       "edition_number": 1,
       "num_editions": 1,
-      "bitcoin_ID_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
+      "bitcoin_ID_noPrefix": "1KJ8NXUbCf2Ax64SPs89fCX2jYExw4tYVX",
       "yearAndEdition_str": "2015, 1/1",
       "artistNameOrID": "New Artist",
-      "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo/thumbnail/elmo.jpg.png",
+      "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo-1/thumbnail/elmo-1.jpg.png",
       "availableActions": "View",
       "isActiveInPrize": false,
       "ratingFromUser": null
     },
     "type": "OwnershipTransfer",
-    "datetime": "2015-05-12T10:00:14.127345Z",
-    "btc_tx": null,
+    "datetime": "2015-05-13T07:38:30.617410Z",
+    "btc_tx": {
+      "datetime": "2015-05-13T08:22:43.594607Z",
+      "service": "<bitcoin.bitcoin_service.BitcoinDaemonMainnetService object at 0x7fb390efae90>",
+      "user": {
+        "id": 670,
+        "email": "makx@mailinator.com",
+        "username": "makx",
+        "prize_role": {
+          "type": "",
+          "prize": {"name": ""},
+          "round": null,
+          "canVote": false,
+          "canSubmit": false
+        }
+      },
+      "from_address": "2015/5/12/10/22/50/311278:1KJ8NXUbCf2Ax64SPs89fCX2jYExw4tYVX",
+      "inputs": "[{'output': 'e18379a217b295168e59a78e5098539be9e7fd0a654a2622785aabcde1aca748:0', 'value': 10600}]",
+      "outputs": "[{'value': 600, 'address': u'18HbwQSmkwPwd5d3dt23qqdow8UjtjYJ4K'}]",
+      "mining_fee": 10000,
+      "tx": "1151c1f1a78f9930d844358a6030d5091abca52cb39fa8e906423458b654036d",
+      "block_height": null,
+      "status": 1,
+      "spoolverb": "ASCRIBESPOOLTRANSFER"
+    },
     "new_owner": {
       "id": 671,
       "email": "foo@mailinator.com",
@@ -682,10 +726,134 @@ curl https://www.ascribe.io/api/ownership/transfers/4422/
         "canSubmit": false
       }
     },
-    "new_btc_address": null,
-    "prev_btc_address": null,
+    "new_btc_address": "2015/5/13/8/22/42/856219:18HbwQSmkwPwd5d3dt23qqdow8UjtjYJ4K",
+    "prev_btc_address": "2015/5/12/10/22/50/311278:1KJ8NXUbCf2Ax64SPs89fCX2jYExw4tYVX",
     "status": null
   },
   "success": true
 }
 ```
+
+### Consign
+
+#### Consign a piece
+When consigning a piece, you send a request for consignment to the consignee. 
+Once accepted by the consignee, the consignment will change state and is recorded on the blockchain. 
+
+##### HTTP Request
+`POST https://www.ascribe.io/api/ownership/consigns/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+bitcoin_ID_noPrefix | `<string>` The ID as the registration address of the artwork
+consignee | `<email>` The email of the consignee
+password | `<string>` Your ascribe password
+consign_message | `(optional) <string>` Additional message
+
+##### Example Request
+```shell
+curl -X POST https://www.ascribe.io/api/ownership/consigns/ 
+    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
+    -d bitcoin_ID_noPrefix=157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W 
+    -d consignee=foo@mailinator.com 
+    -d password=mypassword 
+    -d consign_message='I consign this piece to you'
+```
+##### Example Response
+```json
+{
+  "notification": "You have successfully consigned \"Elmo\" to foo, pending their confirmation.",
+  "success": true
+}
+```
+An error will occur when trying to consign a piece that's not yours:
+```json
+{
+  "errors": {"bitcoin_ID_noPrefix": ["You don't have the appropriate rights to consign this piece"]},
+  "success": false
+}
+```
+
+#### Confirm/deny a consignment
+When someone consigns a piece to you, you receive a request for consignment to the consignee. 
+You can confirm or deny the consignment. 
+
+##### HTTP Request
+`POST https://www.ascribe.io/api/ownership/consigns/confirm/`
+`POST https://www.ascribe.io/api/ownership/consigns/deny/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+bitcoin_ID_noPrefix | `<string>` The ID as the registration address of the artwork
+
+
+##### Example Confirm Request
+```shell
+curl -X POST https://www.ascribe.io/api/ownership/consigns/confirm/ 
+    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
+    -d bitcoin_ID_noPrefix=157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W
+```
+##### Example Confirm Response
+```json
+{
+  "notification": "You have succesfully confirmed consignment  of Elmo by New Artist, edition 1.",
+  "success": true
+}
+```
+Or upon an error:
+```json
+{
+  "errors": {"non_field_errors": ["This piece is not pending for actions"]},
+  "success": false
+}
+```
+
+##### Example Deny Request
+```shell
+curl -X POST https://www.ascribe.io/api/ownership/consigns/deny/ 
+    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
+    -d bitcoin_ID_noPrefix=157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W
+```
+##### Example Deny Response
+```json
+{
+  "notification": "You have denied consignment  of Elmo by New Artist, edition 20.",
+  "success": true
+}
+```
+
+#### List the consignments
+
+##### HTTP Request
+`GET https://www.ascribe.io/api/ownership/consigns/?page={number}&page_size={number}
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+page | `(optional) <int>` The pagination number
+page_size | `(optional) <int>` Number of results per page
+
+#### Retrieve a consignment
+
+##### HTTP Request
+`GET https://www.ascribe.io/api/ownership/consigns/{id}/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+id | `<int>` The ID of the consignment
+
