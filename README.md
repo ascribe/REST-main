@@ -50,15 +50,27 @@ The user can then create a token of type 'Bearer'.
 #### List all pieces
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/pieces/`
+`GET https://www.ascribe.io/api/pieces/?page={number}&page_size={number}&search={query}&ordering={order}`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+page | `(optional) <int>` The pagination number
+page_size | `(optional) <int>` Number of results per page
+search | `(optional) <string>` Search fields are `title`, `artist_name`
+ordering | `(optional) <string>` Ordering fields are `title` (reverse order with `-title`), `artist_name`, `datetime_created`, `edition_number`. 
 
 ##### Example Request
 ```shell
 curl https://www.ascribe.io/api/pieces/ 
      -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
+     -d page_size=10 
+     -d page=1 
+     -d search=Elm
+     -d ordering=-edition_number
 ```
 
 ##### Example Response
@@ -67,16 +79,19 @@ curl https://www.ascribe.io/api/pieces/
 ```json
 {
   "success": true,
+  "count":27,
+  "next":"https://www.ascribe.io/api/pieces/?page=2&page_size=10&search=Elmo&ordering=-edition_number",
+  "previous":null,
   "pieces": [
     {
       "title": "Elmo",
       "artist_name": "New Artist",
-      "edition_number": 1,
-      "num_editions": 1,
-      "bitcoin_ID_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
-      "yearAndEdition_str": "2015, 1/1",
+      "edition_number": 20,
+      "num_editions": 20,
+      "bitcoin_ID_noPrefix": "1G5CZbpCtyWNf1QqudiHM9kvrWnfdHj2v9",
+      "yearAndEdition_str": "2015, 20/20",
       "artistNameOrID": "New Artist",
-      "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo/thumbnail/elmo.jpg.png",
+      "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/test/makx/elmo/thumbnail/elmo.jpg.png",
       "availableActions": "Transfer/Consign/Loan",
       "isActiveInPrize": false,
       "ratingFromUser": null
@@ -252,6 +267,27 @@ curl -X POST http://www.ascribe.io/api/pieces/
 }
 ```
 
+#### Delete a piece
+
+##### HTTP Request
+`DELETE https://www.ascribe.io/api/pieces/{bitcoin_ID}/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+
+##### Example Request
+```shell
+curl -X DELETE http://www.ascribe.io/api/pieces/{bitcoin_ID}/
+     -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
+```
+##### Example Response
+```json
+{
+  "notification": "You have successfully deleted \"Elmo\" by New Artist, edition 11.",
+  "success": true
+}
+```
 
 ### Transfer
 
