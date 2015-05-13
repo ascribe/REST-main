@@ -288,6 +288,212 @@ curl -X DELETE http://www.ascribe.io/api/pieces/{bitcoin_ID}/
   "success": true
 }
 ```
+### Registration
+
+#### Register a piece
+
+A piece is registered in the blockchain upon creation. When the number of editions is specified, 
+each edition is only registered in the blockchain right before any ownership action (transfer, consign, loan, ...) has been performed.   
+
+#### List the registrations
+
+##### HTTP Request
+`GET https://www.ascribe.io/api/ownership/registrations/?page={number}&page_size={number}&search={query}&ordering={order}`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+page | `(optional) <int>` The pagination number
+page_size | `(optional) <int>` Number of results per page
+search | `(optional) <string>` Search fields are `title`, `artist_name`
+ordering | `(optional) <string>` Ordering fields are `title` (reverse order with `-title`), `artist_name`, `datetime_created`, `edition_number`. 
+
+##### Example Request
+```shell
+curl https://www.ascribe.io/api/ownership/registrations/ 
+     -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
+     -d page_size=10 
+     -d page=1 
+```
+
+##### Example Response
+```json
+{
+  "success": true,
+  "count": 4,
+  "next": null,
+  "previous": null,
+  "registrations": [
+    {
+      "id": 4423,
+      "piece": {
+        "title": "Elmo",
+        "artist_name": "New Artist",
+        "edition_number": 1,
+        "num_editions": 1,
+        "bitcoin_ID_noPrefix": "1NvfMSvFoEAjAvoURwWcTPXdpxVWffTWDe",
+        "yearAndEdition_str": "2015, 1/1",
+        "artistNameOrID": "New Artist",
+        "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo-0/thumbnail/elmo-0.jpg.png",
+        "availableActions": "Transfer/Consign/Loan",
+        "isActiveInPrize": false,
+        "ratingFromUser": null
+      },
+      "type": "OwnershipRegistration",
+      "datetime": "2015-05-12T10:21:58.981849Z",
+      "btc_tx": {
+        "datetime": "2015-05-12T10:21:59.894655Z",
+        "service": "<bitcoin.bitcoin_service.BitcoinDaemonMainnetService object at 0x7f92ca7c5890>",
+        "user": {
+          "id": 670,
+          "email": "makx@mailinator.com",
+          "username": "makx",
+          "prize_role": {
+            "type": "",
+            "prize": {"name": ""},
+            "round": null,
+            "canVote": false,
+            "canSubmit": false
+          }
+        },
+        "from_address": "12udvE3zmbQLhtSGZUqqAvGWSKDUCpbgoq",
+        "inputs": null,
+        "outputs": "[{'value': 600, 'address': u'1EpeiZqdFqre79AJQ8Tn5aGQ6UrFBCgvED'}, {'value': 600, 'address': u'1NvfMSvFoEAjAvoURwWcTPXdpxVWffTWDe'}]",
+        "mining_fee": null,
+        "tx": null,
+        "block_height": null,
+        "status": 0,
+        "spoolverb": "ASCRIBESPOOLREGISTER"
+      },
+      "new_owner": {
+        "id": 670,
+        "email": "makx@mailinator.com",
+        "username": "makx",
+        "prize_role": {
+          "type": "",
+          "prize": {"name": ""},
+          "round": null,
+          "canVote": false,
+          "canSubmit": false
+        }
+      },
+      "prev_owner": {
+        "id": 670,
+        "email": "makx@mailinator.com",
+        "username": "makx",
+        "prize_role": {
+          "type": "",
+          "prize": {"name": ""},
+          "round": null,
+          "canVote": false,
+          "canSubmit": false
+        }
+      },
+      "new_btc_address": "1EpeiZqdFqre79AJQ8Tn5aGQ6UrFBCgvED",
+      "prev_btc_address": "12udvE3zmbQLhtSGZUqqAvGWSKDUCpbgoq",
+      "status": null
+    },
+    ...
+  ],
+  "success": true
+}
+```
+#### Retrieve a registration
+
+##### HTTP Request
+`GET https://www.ascribe.io/api/ownership/registrations/{id}/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+id | `<int>` The ID of the registration
+
+##### Example Request
+```shell
+curl https://www.ascribe.io/api/ownership/registrations/4424/
+     -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
+```
+##### Example Response
+```json
+{
+  "success": true,
+  "registration": {
+    "id": 4424,
+    "piece": {
+      "title": "Elmo",
+      "artist_name": "New Artist",
+      "edition_number": 1,
+      "num_editions": 1,
+      "bitcoin_ID_noPrefix": "1KJ8NXUbCf2Ax64SPs89fCX2jYExw4tYVX",
+      "yearAndEdition_str": "2015, 1/1",
+      "artistNameOrID": "New Artist",
+      "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/local/makx/elmo-1/thumbnail/elmo-1.jpg.png",
+      "availableActions": "View",
+      "isActiveInPrize": false,
+      "ratingFromUser": null
+    },
+    "type": "OwnershipRegistration",
+    "datetime": "2015-05-12T10:22:51.057945Z",
+    "btc_tx": {
+      "datetime": "2015-05-12T10:22:52.076892Z",
+      "service": "<bitcoin.bitcoin_service.BitcoinDaemonMainnetService object at 0x7f92ca597790>",
+      "user": {
+        "id": 670,
+        "email": "makx@mailinator.com",
+        "username": "makx",
+        "prize_role": {
+          "type": "",
+          "prize": {"name": ""},
+          "round": null,
+          "canVote": false,
+          "canSubmit": false
+        }
+      },
+      "from_address": "12udvE3zmbQLhtSGZUqqAvGWSKDUCpbgoq",
+      "inputs": null,
+      "outputs": "[{'value': 600, 'address': u'1HWCTCibZgCLqEyGzzEJfx22YtENJe27DV'}, {'value': 600, 'address': u'1KJ8NXUbCf2Ax64SPs89fCX2jYExw4tYVX'}]",
+      "mining_fee": null,
+      "tx": null,
+      "block_height": null,
+      "status": 0,
+      "spoolverb": "ASCRIBESPOOLREGISTER"
+    },
+    "new_owner": {
+      "id": 670,
+      "email": "makx@mailinator.com",
+      "username": "makx",
+      "prize_role": {
+        "type": "",
+        "prize": {"name": ""},
+        "round": null,
+        "canVote": false,
+        "canSubmit": false
+      }
+    },
+    "prev_owner": {
+      "id": 670,
+      "email": "makx@mailinator.com",
+      "username": "makx",
+      "prize_role": {
+        "type": "",
+        "prize": {"name": ""},
+        "round": null,
+        "canVote": false,
+        "canSubmit": false
+      }
+    },
+    "new_btc_address": "1HWCTCibZgCLqEyGzzEJfx22YtENJe27DV",
+    "prev_btc_address": "12udvE3zmbQLhtSGZUqqAvGWSKDUCpbgoq",
+    "status": null
+  }
+}
+```
 
 ### Transfer
 
@@ -333,19 +539,34 @@ An error will occur when trying to transfer a piece that's not yours:
 #### List the transfers
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/ownership/transfers/`
+`GET https://www.ascribe.io/api/ownership/transfers/?page={number}&page_size={number}&search={query}&ordering={order}`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
 
+##### Arguments
+Parameter | Description
+----------|------------
+page | `(optional) <int>` The pagination number
+page_size | `(optional) <int>` Number of results per page
+search | `(optional) <string>` Search fields are `title`, `artist_name`
+ordering | `(optional) <string>` Ordering fields are `title` (reverse order with `-title`), `artist_name`, `datetime_created`, `edition_number`. 
+
 ##### Example Request
 ```shell
-curl -X GET https://www.ascribe.io/api/ownership/transfers/ 
-    -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
+curl https://www.ascribe.io/api/ownership/transfers/ 
+     -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
+     -d page_size=10 
+     -d page=1 
 ```
+
 ##### Example Response
 ```json
 {
+  "success": true,
+  "count": 2,
+  "next": null,
+  "previous": null,
   "transfers": [
     {
       "id": 4422,
