@@ -16,7 +16,7 @@ Main RESTful API for ascribe ownership web service. https://www.ascribe.io
     - [Consign](#consign)
     - [Unconsign](#unconsign)
     - [Loan](#loan)
-- [Similarity Search API](similarity-search-api)
+- [Similarity Search API](#similarity-search-api)
     - [Photos](#photos)
     
 ## API Documentation
