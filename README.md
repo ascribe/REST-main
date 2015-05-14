@@ -794,6 +794,7 @@ You can confirm or deny the consignment.
 
 ##### HTTP Request
 `POST https://www.ascribe.io/api/ownership/consigns/confirm/`
+
 `POST https://www.ascribe.io/api/ownership/consigns/deny/`
 
 ##### HTTP Headers
@@ -1060,6 +1061,7 @@ You can confirm or deny the loan.
 
 ##### HTTP Request
 `POST https://www.ascribe.io/api/ownership/loans/confirm/`
+
 `POST https://www.ascribe.io/api/ownership/loans/deny/`
 
 ##### HTTP Headers
