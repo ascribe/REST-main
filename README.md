@@ -288,7 +288,7 @@ curl https://www.ascribe.io/api/pieces/1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X/
 
 ##### Example Request
 ```shell
-curl -X DELETE http://www.ascribe.io/api/pieces/{bitcoin_ID_noPrefix}/
+curl -X DELETE http://www.ascribe.io/api/pieces/146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2/
      -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
 ```
 ##### Example Response
