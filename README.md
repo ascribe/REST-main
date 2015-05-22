@@ -104,16 +104,16 @@ curl -X POST http://www.ascribe.io/api/pieces/
     "availableActions": "Transfer/Consign/Loan",
     "isActiveInPrize": false,
     "ratingFromUser": null,
-    "hashAsAddress": "16NBKk6HjnzHC48qXxq15XnAgbzK56T7A2",
+    "hash_as_address": "16NBKk6HjnzHC48qXxq15XnAgbzK56T7A2",
     "btcOwnerAddress_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
     "owner": "makx",
-    "ownershipHistory": [
+    "ownership_history": [
       [
         "May. 12, 2015, 09:56:29",
         "Registered by makx"
       ]
     ],
-    "loanHistory": [],
+    "loan_history": [],
     "datetime_registered": "2015-05-12T09:56:29.766455Z",
     "date_created": "2015-05-12",
     "extra_data": {},
@@ -140,7 +140,7 @@ curl -X POST http://www.ascribe.io/api/pieces/
     "consign_status": 0,
     "consign_status_str": "-",
     "consignee_name": null,
-    "noteFromUser": null,
+    "note_from_user": null,
     "prizeDetails": null
   },
   "success": true
@@ -235,16 +235,16 @@ curl https://www.ascribe.io/api/pieces/1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X/
     "availableActions": "Transfer/Consign/Loan",
     "isActiveInPrize": false,
     "ratingFromUser": null,
-    "hashAsAddress": "16NBKk6HjnzHC48qXxq15XnAgbzK56T7A2",
+    "hash_as_address": "16NBKk6HjnzHC48qXxq15XnAgbzK56T7A2",
     "btcOwnerAddress_noPrefix": "146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2",
     "owner": "makx",
-    "ownershipHistory": [
+    "ownership_history": [
       [
         "May. 12, 2015, 09:56:29",
         "Registered by makx"
       ]
     ],
-    "loanHistory": [],
+    "loan_history": [],
     "datetime_registered": "2015-05-12T09:56:29.766455Z",
     "date_created": "2015-05-12",
     "extra_data": {},
@@ -271,7 +271,7 @@ curl https://www.ascribe.io/api/pieces/1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X/
     "consign_status": 0,
     "consign_status_str": "-",
     "consignee_name": null,
-    "noteFromUser": null,
+    "note_from_user": null,
     "prizeDetails": null
   },
   "success": true
