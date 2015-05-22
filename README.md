@@ -150,7 +150,7 @@ curl -X POST http://www.ascribe.io/api/pieces/
 #### List all pieces
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/pieces/?page={number}&page_size={number}&search={query}&ordering={order}`
+`GET https://www.ascribe.io/api/pieces/?page=<number>&page_size=<number>&search=<query>&ordering=<order>`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -204,7 +204,7 @@ curl https://www.ascribe.io/api/pieces/
 #### Retrieve a piece
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/pieces/{bitcoin_ID_noPrefix}/`
+`GET https://www.ascribe.io/api/pieces/<bitcoin_ID_noPrefix>/`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -280,7 +280,7 @@ curl https://www.ascribe.io/api/pieces/1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X/
 #### Delete a piece
 
 ##### HTTP Request
-`DELETE https://www.ascribe.io/api/pieces/{bitcoin_ID_noPrefix}/`
+`DELETE https://www.ascribe.io/api/pieces/<bitcoin_ID_noPrefix>/`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -288,7 +288,7 @@ curl https://www.ascribe.io/api/pieces/1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X/
 
 ##### Example Request
 ```shell
-curl -X DELETE http://www.ascribe.io/api/pieces/{bitcoin_ID_noPrefix}/
+curl -X DELETE http://www.ascribe.io/api/pieces/146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2/
      -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
 ```
 ##### Example Response
@@ -308,7 +308,7 @@ each edition is only registered in the blockchain right before any ownership act
 #### List the registrations
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/ownership/registrations/?page={number}&page_size={number}&search={query}&ordering={order}`
+`GET https://www.ascribe.io/api/ownership/registrations/?page=<number>&page_size=<number>`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -318,8 +318,6 @@ Parameter | Description
 ----------|------------
 page | `(optional) <int>` The pagination number
 page_size | `(optional) <int>` Number of results per page
-search | `(optional) <string>` Search fields are `title`, `artist_name`
-ordering | `(optional) <string>` Ordering fields are `title` (reverse order with `-title`), `artist_name`, `datetime_created`, `edition_number`. 
 
 ##### Example Request
 ```shell
@@ -414,7 +412,7 @@ curl https://www.ascribe.io/api/ownership/registrations/
 #### Retrieve a registration
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/ownership/registrations/{id}/`
+`GET https://www.ascribe.io/api/ownership/registrations/<id>/`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -549,7 +547,7 @@ An error will occur when trying to transfer a piece that's not yours:
 #### List the transfers
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/ownership/transfers/?page={number}&page_size={number}`
+`GET https://www.ascribe.io/api/ownership/transfers/?page=<number>&page_size=<number>`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -653,7 +651,7 @@ curl https://www.ascribe.io/api/ownership/transfers/
 #### Retrieve a transfer
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/ownership/transfers/{id}/`
+`GET https://www.ascribe.io/api/ownership/transfers/<id>/`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -796,6 +794,7 @@ You can confirm or deny the consignment.
 
 ##### HTTP Request
 `POST https://www.ascribe.io/api/ownership/consigns/confirm/`
+
 `POST https://www.ascribe.io/api/ownership/consigns/deny/`
 
 ##### HTTP Headers
@@ -845,7 +844,7 @@ curl -X POST https://www.ascribe.io/api/ownership/consigns/deny/
 #### List the consignments
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/ownership/consigns/?page={number}&page_size={number}
+`GET https://www.ascribe.io/api/ownership/consigns/?page=<number>&page_size=<number>`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -859,7 +858,7 @@ page_size | `(optional) <int>` Number of results per page
 #### Retrieve a consignment
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/ownership/consigns/{id}/`
+`GET https://www.ascribe.io/api/ownership/consigns/<id>/`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -981,7 +980,7 @@ curl -X POST https://www.ascribe.io/api/ownership/unconsigns/deny/
 #### List the unconsignments
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/ownership/unconsigns/?page={number}&page_size={number}
+`GET https://www.ascribe.io/api/ownership/unconsigns/?page=<number>&page_size=<number>`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -995,7 +994,7 @@ page_size | `(optional) <int>` Number of results per page
 #### Retrieve an unconsignment
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/ownership/unconsigns/{id}/`
+`GET https://www.ascribe.io/api/ownership/unconsigns/<id>/`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -1062,6 +1061,7 @@ You can confirm or deny the loan.
 
 ##### HTTP Request
 `POST https://www.ascribe.io/api/ownership/loans/confirm/`
+
 `POST https://www.ascribe.io/api/ownership/loans/deny/`
 
 ##### HTTP Headers
@@ -1104,7 +1104,7 @@ curl -X POST https://www.ascribe.io/api/ownership/loans/deny/
 #### List the loans
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/ownership/loans/?page={number}&page_size={number}
+`GET https://www.ascribe.io/api/ownership/loans/?page=<number>&page_size=<number>`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
@@ -1118,7 +1118,7 @@ page_size | `(optional) <int>` Number of results per page
 #### Retrieve a consignment
 
 ##### HTTP Request
-`GET https://www.ascribe.io/api/ownership/loans/{id}/`
+`GET https://www.ascribe.io/api/ownership/loans/<id>li/`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
