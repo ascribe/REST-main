@@ -1226,7 +1226,7 @@ If an error occurs, the JSON will contain the key ``error``.
 </pre>
 
 ## Background
-SPOOL was developed by ascribe GmbH as part of the overall ascribe technology stack. http://www.ascribe.io
+This was developed by ascribe GmbH as part of the overall ascribe technology stack. http://www.ascribe.io
 
 ## Copyright
 
