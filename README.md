@@ -1226,10 +1226,10 @@ If an error occurs, the JSON will contain the key ``error``.
 </pre>
 
 ## Background
-This was developed by ascribe GmbH as part of the overall ascribe technology stack. http://www.ascribe.io
+This API & documentation was developed by ascribe GmbH as part of the overall ascribe technology stack. http://www.ascribe.io
 
 ## Copyright
 
-SPOOL is © 2015 ascribe GmbH.
+This API & documentation is © 2015 ascribe GmbH.
 
-SPOOL is available for use under the Creative Commons CC-BY-SA 3.0 license.
+This API & documentation  is available for use under the Creative Commons CC-BY-SA 3.0 license.
