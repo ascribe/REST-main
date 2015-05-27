@@ -1,7 +1,11 @@
-# REST-main
-Version: 0.1
+# ascribe REST API
 
-Main RESTful API for ascribe ownership web service. https://www.ascribe.io
+<pre>
+  Title: ascribe REST API
+  Description: Main RESTful API for ascribe ownership web service. https://www.ascribe.io
+  First public release: 2015-04-26
+  Current public release: 2015-05-06, version 0.1
+</pre>
 
 ## Table of Contents
 
@@ -1221,5 +1225,11 @@ If an error occurs, the JSON will contain the key ``error``.
 }
 </pre>
 
+## Background
+SPOOL was developed by ascribe GmbH as part of the overall ascribe technology stack. http://www.ascribe.io
 
+## Copyright
 
+SPOOL is © 2015 ascribe GmbH.
+
+SPOOL is available for use under the Creative Commons CC-BY-SA 3.0 license.
