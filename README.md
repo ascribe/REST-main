@@ -86,7 +86,7 @@ consign | `(optional) <boolean>` Set to True if the marketplace acts as a consig
 
 ##### Example Request
 ```shell
-curl -X POST http://www.ascribe.io/api/pieces/ 
+curl -X POST https://www.ascribe.io/api/pieces/ 
      -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD' 
      -d file_url=https://ascribe0.s3.amazonaws.com/local/admin@makx.com/elmo/digitalworkfile/elmo.jpg 
      -d title='New Piece' 
@@ -292,7 +292,7 @@ curl https://www.ascribe.io/api/pieces/1NwT94k4srVqXjBPEi7dfuhSHQdpC5g69X/
 
 ##### Example Request
 ```shell
-curl -X DELETE http://www.ascribe.io/api/pieces/146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2/
+curl -X DELETE https://www.ascribe.io/api/pieces/146eRKTDYzMxisg8d8q1KsxsaskPm7PSK2/
      -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
 ```
 ##### Example Response
@@ -1137,7 +1137,7 @@ id | `<int>` The ID of the loan
 
 ### Photos
 Match images from the web against images in the photos marketplace.
-Try it in the browser at [labs.ascribe.io/similarity/photos](http://labs.ascribe.io/similarity/photos/).
+Try it in the browser at [labs.ascribe.io/similarity/photos](https://labs.ascribe.io/similarity/photos/).
 
 #### Version
 0.1 Beta
@@ -1156,7 +1156,7 @@ A perfect match has a ```dist``` value of ```0.0```.
 
 
 ##### HTTP Request
-`GET http://labs.ascribe.io/similarity/photos/api/search/?image_url=<url>`
+`GET https://labs.ascribe.io/similarity/photos/api/search/?image_url=<url>`
 
 ##### Arguments
 Parameter | Description
@@ -1165,7 +1165,7 @@ image_url | `<string>` The url of the image. Should be encoded.
 
 ##### Example Request
 ```shell
-curl http://labs.ascribe.io/similarity/photos/api/search/
+curl https://labs.ascribe.io/similarity/photos/api/search/
     -d image_url=http%3A%2F%2Fcdn...com%2Fthumb%2F640%2F480%2....jpg
 ```
 ##### Example Response
@@ -1226,7 +1226,7 @@ If an error occurs, the JSON will contain the key ``error``.
 </pre>
 
 ## Background
-This API & documentation was developed by ascribe GmbH as part of the overall ascribe technology stack. http://www.ascribe.io
+This API & documentation was developed by ascribe GmbH as part of the overall ascribe technology stack. https://www.ascribe.io
 
 ## Copyright
 
