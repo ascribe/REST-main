@@ -85,6 +85,9 @@ date_created | `(optional) <YYYY-MM-DD>` The creation date
 num_editions | `(optional) <int>` The number of editions (will create as many pieces)
 consign | `(optional) <boolean>` Set to True if the marketplace acts as a consignee
 
+If you don't specify `num_editions` there will be no editions associated with the piece. 
+You can specify the number of editions for the piece later (see Create number of editions)
+
 ##### Example Request
 ```shell
 curl -X POST https://www.ascribe.io/api/pieces/ 
@@ -293,6 +296,36 @@ curl https://www.ascribe.io/api/pieces/8553/editions/
 ```
 
 ### Editions
+
+#### Create number of editions
+
+##### HTTP Request
+`POST https://www.ascribe.io/api/editions/`
+
+##### HTTP Headers
+`Authorization: Bearer <access_token>`
+
+##### Arguments
+Parameter | Description
+----------|------------
+piece_id | `<int>` The id of the piece
+num_editions | `<int>` Number of editions for the piece
+
+##### Example Request
+```shell
+curl -X POST https://www.ascribe.io/api/editions/ 
+     -H 'Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD'
+     -d piece_id=1071 
+     -d num_editions=10 
+```
+
+##### Example Response
+```json
+{
+  "success": true,
+  "notification": "You successfully registered 10 editions for piece with ID 1ADJ5fYt1Hq4acL3e7gVr7st6SD8rZq51d."
+}
+```
 
 #### List all editions
 
@@ -1391,7 +1424,7 @@ Once accepted by the loanee, the loan will change state and is recorded on the b
 Action taken by the owner. Send a request to the loanee to accept the loan.
 
 ##### HTTP Request
-`POST https://www.ascribe.io/api/ownership/loans/`
+`POST https://www.ascribe.io/api/ownership/loans/editions/`
 
 ##### HTTP Headers
 `Authorization: Bearer <access_token>`
