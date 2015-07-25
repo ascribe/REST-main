@@ -203,7 +203,7 @@ curl https://www.ascribe.io/api/pieces/
 ##### Arguments
 Parameter | Description
 ----------|------------
-id | `<integer>` The id of the piece
+id | `<integer>` The ID of the piece
 
 ##### Example Request
 ```shell
@@ -256,7 +256,7 @@ curl https://www.ascribe.io/api/pieces/8530/
 ##### Arguments
 Parameter | Description
 ----------|------------
-id | `<integer>` The id of the piece
+id | `<integer>` The ID of the piece
 
 ##### Example Request
 ```shell
@@ -308,7 +308,7 @@ curl https://www.ascribe.io/api/pieces/8553/editions/
 ##### Arguments
 Parameter | Description
 ----------|------------
-piece_id | `<int>` The id of the piece
+piece_id | `<int>` The ID of the piece
 num_editions | `<int>` Number of editions for the piece
 
 ##### Example Request
@@ -398,7 +398,7 @@ curl -G https://www.ascribe.io/api/editions/
 ##### Arguments
 Parameter | Description
 ----------|------------
-bitcoin_id | `<string>` The bitcoin id of the edition
+bitcoin_id | `<string>` The bitcoin ID of the edition
 
 ##### Example Request
 ```shell
@@ -483,7 +483,7 @@ curl https://www.ascribe.io/api/editions/1N1kaRd7A3vYR4d1sfysPHQMMURoHCtmWY/
 ##### Arguments
 Parameter | Description
 ----------|------------
-bitcoin_id | `<string>` The bitcoin id of the edition
+bitcoin_id | `<string>` The bitcoin ID of the edition
 
 ##### Example Request
 ```shell
@@ -877,7 +877,7 @@ curl https://www.ascribe.io/api/ownership/transfers/4431/
 ```
 
 ### Consign
-When consigning a piece, you assign the right to the consignee to sell the piece on your behalve
+When consigning a piece, you assign the right to the consignee to sell the piece on your behalve.
 Hereto, one needs to send a request for consignment to the consignee. 
 Once accepted by the consignee, the consignment will change state and is recorded on the blockchain. 
 
@@ -970,7 +970,7 @@ curl -X POST https://www.ascribe.io/api/ownership/consigns/deny/
 ##### Example Deny Response
 ```json
 {
-  "notification": "You have denied consignment  of art1 by art1, edition 4.",
+  "notification": "You have denied consignment of art1 by art1, edition 4.",
   "success": true
 }
 ```
@@ -1493,7 +1493,7 @@ curl -X POST https://www.ascribe.io/api/ownership/loans/confirm/
 ##### Example Confirm Response
 ```json
 {
-  "notification": "You have succesfully confirmed the loan  of art1 by art1, edition 8.",
+  "notification": "You have succesfully confirmed the loan of art1 by art1, edition 8.",
   "success": true
 }
 ```
@@ -1514,7 +1514,7 @@ curl -X POST https://www.ascribe.io/api/ownership/loans/deny/
 ##### Example Deny Response
 ```json
 {
-  "notification": "You have denied the loan  of art1 by art1, edition 10.",
+  "notification": "You have denied the loan of art1 by art1, edition 10.",
   "success": true
 }
 ```
@@ -1770,4 +1770,4 @@ This API & documentation was developed by ascribe GmbH as part of the overall as
 
 This API & documentation is © 2015 ascribe GmbH.
 
-This API & documentation  is available for use under the Creative Commons CC-BY-SA 3.0 license.
+This API & documentation is available for use under the Creative Commons CC-BY-SA 3.0 license.
