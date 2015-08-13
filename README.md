@@ -1707,48 +1707,48 @@ curl -X GET http://labs.ascribe.io/similarity/global/api/search/
     -d image_url=http%3A%2F%2Fcdn...com%2Fthumb%2F640%2F480%2....jpg
 ```
 ##### Example Response
-Status code 200 and an array of ```{dist, path, id}``` image descriptions. In case of error, the returned JSON will contain the key ``error``
+Status code 200 and an array of ```{dist, url, id}``` image descriptions. In case of error, the returned JSON will contain the key ``error``
 
 <pre>
 {
     "result": [
         {
-            "path": "http://www.photos.com/img1.jpg",
+            "url": "http://www.photos.com/img1.jpg",
             "dist": 0,
             "id": 12
         },
         {
-            "path": "http://www.photos.com/img2.jpg",
+            "url": "http://www.photos.com/img2.jpg",
             "dist": 0.43739087511375,
             "id": 528492
         },
         {
-            "path": "http://www.photos.com/img3.jpg",
+            "url": "http://www.photos.com/img3.jpg",
             "dist": 0.4438784282276083,
             "id": 27482264
         },
         {
-            "path": "http://www.photos.com/img4.jpg",
+            "url": "http://www.photos.com/img4.jpg",
             "dist": 0.4500463733919593,
             "id": 27550153
         },
         {
-            "path": "http://www.photos.com/img5.jpg",
+            "url": "http://www.photos.com/img5.jpg",
             "dist": 0.46666245188890754,
             "id": 22654175
         },
         {
-            "path": "http://www.photos.com/img6.jpg",
+            "url": "http://www.photos.com/img6.jpg",
             "dist": 0.4687795429136797,
             "id": 30254571
         },
         {
-            "path": "http://www.photos.com/img7.jpg",
+            "url": "http://www.photos.com/img7.jpg",
             "dist": 0.4719155672668924,
             "id": 24884288
         },
         {
-            "path": "http://www.photos.com/img8.jpg",
+            "url": "http://www.photos.com/img8.jpg",
             "dist": 0.4821427959813869,
             "id": 14152888
         }
