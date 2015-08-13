@@ -1675,7 +1675,7 @@ curl https://www.ascribe.io/api/ownership/loans/5461/
 
 ### Photos
 Match images from the web against images in the photos marketplace.
-Try it in the browser at [labs.ascribe.io/similarity/photos](https://labs.ascribe.io/similarity/photos/).
+Try it in the browser at [labs.ascribe.io/similarity/global](http://labs.ascribe.io/similarity/global/).
 
 #### Version
 0.1 Beta
@@ -1694,7 +1694,7 @@ A perfect match has a ```dist``` value of ```0.0```.
 
 
 ##### HTTP Request
-`GET https://labs.ascribe.io/similarity/photos/api/search/?image_url=<url>`
+`GET http://labs.ascribe.io/similarity/global/api/search/?image_url=<url>`
 
 ##### Arguments
 Parameter | Description
@@ -1703,7 +1703,7 @@ image_url | `<string>` The url of the image. Should be encoded.
 
 ##### Example Request
 ```shell
-curl https://labs.ascribe.io/similarity/photos/api/search/
+curl http://labs.ascribe.io/similarity/global/api/search/
     -d image_url=http%3A%2F%2Fcdn...com%2Fthumb%2F640%2F480%2....jpg
 ```
 ##### Example Response
