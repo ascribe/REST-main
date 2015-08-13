@@ -1703,7 +1703,7 @@ image_url | `<string>` The url of the image. Should be encoded.
 
 ##### Example Request
 ```shell
-curl http://labs.ascribe.io/similarity/global/api/search/
+curl -X GET http://labs.ascribe.io/similarity/global/api/search/
     -d image_url=http%3A%2F%2Fcdn...com%2Fthumb%2F640%2F480%2....jpg
 ```
 ##### Example Response
