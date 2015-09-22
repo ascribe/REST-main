@@ -4,14 +4,20 @@ HOST: https://www.ascribe.io/api
 
 # ascribe ownership REST API
 
-Main RESTful API for ascribe ownership web service. https://www.ascribe.io
+Main RESTful API for ascribe. https://www.ascribe.io
 
 ## Overview
-Integration has these actions:
 
-1. Register your app/marketplace and request an access token. This is a one time action.
-2. Register a piece (digital work). 
-3. Check the status of a piece.
+Here's a typical usage:
+- Get an access token: Sign up / log into ascribe webapp, then settings -> API integration, enter application name, copy token.
+- Register a piece (digital work). 
+- Register the number of editions for the piece
+- Transfer the ownership 
+- Check the status of a piece, edition, etc
+
+Other usage:
+- Consign - give someone the right to sell a work on another's behalf (eg marketplace)
+- Loan - give public display rights to someone, for a fixed time period
 
 ## Authorization Flow
 Let's call the marketplace Makx.
@@ -44,8 +50,6 @@ SPOOL is the Secure Public Online Ownership Ledger.
 An in-depth specification of the protocol can be found on
 [https://github.com/ascribe/spool](https://github.com/ascribe/spool) 
 
-## Background
-This API & documentation was developed by ascribe GmbH as part of the overall ascribe technology stack. https://www.ascribe.io
 
 ## Copyright
 
