@@ -1,20 +1,10 @@
 # ascribe REST API
 
-<pre>
-  Title: ascribe REST API
-  Description: Main RESTful API for ascribe ownership web service. https://www.ascribe.io
-  First public release: 2015-04-26
-  Current public release: 2015-07-01, version 0.1
-</pre>
-
 
 ## SPOOL API
-SPOOL is the Secure Public Online Ownership Ledger. An in-depth specification of the protocol
-can be found on [https://github.com/ascribe/spool](https://github.com/ascribe/spool)
 
-### Integration & Documentation
-Extensive interactive documentation can be found at
-[docs.ascribe.apiary.io](http://docs.ascribe.apiary.io/).
+Our SPOOL API is now hosted on apiary at 
+[docs.ascribe.apiary.io](http://docs.ascribe.apiary.io/)
 
 ### Contributing
 If you wish to contribute to the SPOOL API blueprint, you're welcome to do so.
