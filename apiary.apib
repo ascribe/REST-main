@@ -117,7 +117,7 @@ This API & documentation is available for use under the Creative Commons CC-BY-S
             } 
     
 
-### Create a Piece [POST /pieces/]
+### Register a Piece [POST /pieces/]
 
 When creating a piece with our API, the piece is automatically registered on the blockchain.
 
@@ -126,7 +126,7 @@ to register the piece as a consignee (someone that has the right to sell the pie
 owner's behalf).
 
 **Note**: If you don't specify `num_editions` there will be no editions associated with the piece.
-You can specify the number of editions for the piece later (see Create number of editions).
+You can specify the number of editions for the piece later (see Register number of editions).
     
 + Request (application/json)
 
@@ -154,7 +154,7 @@ You can specify the number of editions for the piece later (see Create number of
     + Attributes
         + notification (string) - A message describing the result of the request.
         + success (boolean) - A flag indicating whether the request succeeded or not
-        + edition (object) - The created piece/edition
+        + edition (object) - The registered piece/edition
         
     + Body
         
@@ -381,7 +381,7 @@ You can specify the number of editions for the piece later (see Create number of
                 }    
 
 
-### Create an Edition [POST]
+### Register a Number of Editions [POST]
 
 + Request (application/json)
 
@@ -454,7 +454,7 @@ You can specify the number of editions for the piece later (see Create number of
                         "acl_edit": true,
                         "acl_download": true,
                         "acl_delete": true,
-                        "acl_create_editions": false,
+                        "acl_register_editions": false,
                         "acl_view_editions": true,
                         "acl_share": true,
                         "acl_unshare": false,
@@ -567,7 +567,7 @@ ownership action (transfer, consign, loan, ...) has been performed.
 + Response 200
 
 
-### Create a Transfer [POST]
+### Initiate a Transfer of Ownership [POST]
 
 + Attributes
     + bitcoin_id (required, string) - The ID as the registration address of the edition
@@ -1100,7 +1100,7 @@ recorded on the blockchain.
                         "num_editions": 50,
                         "user_registered": "foo",
                         "datetime_registered": "2015-07-01T09:48:51.037053Z",
-                        "date_created": "2015-01-01",
+                        "date_registerd": "2015-01-01",
                         "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/media/thumbnails/ascribe_spiral.png"
                     },
                     "type": "Loan",
