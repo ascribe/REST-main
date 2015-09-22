@@ -19,7 +19,7 @@ Extensive interactive documentation can be found at
 ### Contributing
 If you wish to contribute to the SPOOL API blueprint, you're welcome to do so.
 
-THe SPOOL API blueprint is contained in [apiary.apib](apiary.apib).
+The SPOOL API blueprint is contained in [apiary.apib](apiary.apib).
 
 
 ## Similarity Search API
