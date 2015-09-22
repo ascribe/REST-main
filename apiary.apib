@@ -119,7 +119,7 @@ The rich ownership layer of ascribe allows you to manage your digital assets.
             } 
     
 
-### Register a Piece [POST /pieces/]
+### Register a Piece [POST]
 
 When creating a piece with our API, the piece is automatically registered on the blockchain.
 
@@ -456,7 +456,7 @@ You can specify the number of editions for the piece later (see Register number 
                         "acl_edit": true,
                         "acl_download": true,
                         "acl_delete": true,
-                        "acl_register_editions": false,
+                        "acl_create_editions": false,
                         "acl_view_editions": true,
                         "acl_share": true,
                         "acl_unshare": false,
@@ -1014,7 +1014,7 @@ You can confirm or deny the unconsignment. The confirmation is treated above.
         + notification (string)
 
 
-## Loans for Editions [/ownership/loans/editions]
+## Loans for Editions [/ownership/loans/editions/]
 
 When loaning an edition, you assign the right to the consignee to display the edition in public
 for a limited period of time. Once accepted by the loanee, the loan will change state and is
@@ -1097,7 +1097,7 @@ recorded on the blockchain.
                         "num_editions": 50,
                         "user_registered": "foo",
                         "datetime_registered": "2015-07-01T09:48:51.037053Z",
-                        "date_registerd": "2015-01-01",
+                        "date_created": "2015-01-01",
                         "thumbnail": "https://d1qjsxua1o9x03.cloudfront.net/media/thumbnails/ascribe_spiral.png"
                     },
                     "type": "Loan",
