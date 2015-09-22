@@ -10,14 +10,14 @@ This is the main RESTful API for ascribe. https://www.ascribe.io
 
 Here's a typical usage:
 - Get an access token for your app, using the ascribe webapp. This is a one-time action
-- Register a piece (digital work)
-- Register the number of editions for the piece
-- Transfer the ownership of an edition
+- [Register a piece (digital work)](#reference/ownership/pieces)
+- [Register the number of editions for the piece](#reference/ownership/editions)
+- [Transfer the ownership of an edition](#reference/ownership/transfers)
 - Check the status of a piece, edition, etc
 
 Other usage:
-- Consign - give someone the right to sell a work on another's behalf (eg marketplace)
-- Loan - give public display rights to someone, for a fixed time period
+- [Consign](#reference/ownership/consignments) - give someone the right to sell a work on another's behalf (eg marketplace)
+- [Loan](#reference/ownership/loans-for-pieces) - give public display rights to someone, for a fixed time period
 
 ## Authorization Flow
 Let's call the marketplace Makx.
@@ -50,65 +50,6 @@ encodes the following information:
 # Group Ownership
 
 ## Pieces [/pieces/]
-
-### List Pieces [GET]
-
-+ Request (application/json)
-
-    + Header
-        
-            Authorization: Bearer <your_api_token>
-
-+ Response 200
-
-    + Body
-        
-            {
-                "success": true,
-                "count": 1,
-                "unfiltered_count": 1,
-                "next": null,
-                "previous": null,
-                "pieces": [      
-                    {
-                        "id": 12578,
-                        "title": "elmo",
-                        "artist_name": "the cranberry being",
-                        "num_editions": 10,
-                        "user_registered": "cranberry",
-                        "datetime_registered": "2015-09-18T12:16:47.384245Z",
-                        "date_created": "2015-01-01",
-                        "thumbnail": {
-                            "id": 3726,
-                            "url": "https://d1qjsxua1o9x03.cloudfront.net/live/eb1e78328c46506b46a4ac4a1e378b91/elmo.jpg/thumbnail/100x100/thumbnail.png",
-                            "url_safe": "https://d1qjsxua1o9x03.cloudfront.net/live%2Feb1e78328c46506b46a4ac4a1e378b91%2Felmo.jpg%2Fthumbnail%2F100x100%2Fthumbnail.png",
-                            "mime": "image",
-                            "thumbnail_sizes": {
-                                "600x600": "https://d1qjsxua1o9x03.cloudfront.net/live%2Feb1e78328c46506b46a4ac4a1e378b91%2Felmo.jpg%2Fthumbnail%2F600x600%2Fthumbnail.png",
-                                "300x300": "https://d1qjsxua1o9x03.cloudfront.net/live%2Feb1e78328c46506b46a4ac4a1e378b91%2Felmo.jpg%2Fthumbnail%2F300x300%2Fthumbnail.png",
-                                "100x100": "https://d1qjsxua1o9x03.cloudfront.net/live%2Feb1e78328c46506b46a4ac4a1e378b91%2Felmo.jpg%2Fthumbnail%2F100x100%2Fthumbnail.png"
-                            }
-                        },
-                        "license_type": {
-                            "name": "Attribution without restriction",
-                            "code": "default",
-                            "organization": "ascribe",
-                            "url": "https://www.ascribe.io/faq/#legals"
-                        },
-                        "bitcoin_id": "1EAuSbAGL64EwfJfPKJnZ7HPKJfbKgwsCx",
-                        "acl": {
-                            "acl_view_editions": true
-                        },
-                        "request_action": [],
-                        "first_edition": {
-                            "edition_number": 1,
-                            "num_editions_available": 1,
-                            "bitcoin_id": "1E2Ya9YT9nFphNSinz8TAkpDH5Fj32GHGi"
-                        }
-                    }
-                ]
-            } 
-    
 
 ### Register a Piece [POST]
 
@@ -186,6 +127,66 @@ You can specify the number of editions for the piece later (see Register number 
                     "parent": 8532
                 }
             }
+
+
+### List Pieces [GET]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer <your_api_token>
+
++ Response 200
+
+    + Body
+        
+            {
+                "success": true,
+                "count": 1,
+                "unfiltered_count": 1,
+                "next": null,
+                "previous": null,
+                "pieces": [      
+                    {
+                        "id": 12578,
+                        "title": "elmo",
+                        "artist_name": "the cranberry being",
+                        "num_editions": 10,
+                        "user_registered": "cranberry",
+                        "datetime_registered": "2015-09-18T12:16:47.384245Z",
+                        "date_created": "2015-01-01",
+                        "thumbnail": {
+                            "id": 3726,
+                            "url": "https://d1qjsxua1o9x03.cloudfront.net/live/eb1e78328c46506b46a4ac4a1e378b91/elmo.jpg/thumbnail/100x100/thumbnail.png",
+                            "url_safe": "https://d1qjsxua1o9x03.cloudfront.net/live%2Feb1e78328c46506b46a4ac4a1e378b91%2Felmo.jpg%2Fthumbnail%2F100x100%2Fthumbnail.png",
+                            "mime": "image",
+                            "thumbnail_sizes": {
+                                "600x600": "https://d1qjsxua1o9x03.cloudfront.net/live%2Feb1e78328c46506b46a4ac4a1e378b91%2Felmo.jpg%2Fthumbnail%2F600x600%2Fthumbnail.png",
+                                "300x300": "https://d1qjsxua1o9x03.cloudfront.net/live%2Feb1e78328c46506b46a4ac4a1e378b91%2Felmo.jpg%2Fthumbnail%2F300x300%2Fthumbnail.png",
+                                "100x100": "https://d1qjsxua1o9x03.cloudfront.net/live%2Feb1e78328c46506b46a4ac4a1e378b91%2Felmo.jpg%2Fthumbnail%2F100x100%2Fthumbnail.png"
+                            }
+                        },
+                        "license_type": {
+                            "name": "Attribution without restriction",
+                            "code": "default",
+                            "organization": "ascribe",
+                            "url": "https://www.ascribe.io/faq/#legals"
+                        },
+                        "bitcoin_id": "1EAuSbAGL64EwfJfPKJnZ7HPKJfbKgwsCx",
+                        "acl": {
+                            "acl_view_editions": true
+                        },
+                        "request_action": [],
+                        "first_edition": {
+                            "edition_number": 1,
+                            "num_editions_available": 1,
+                            "bitcoin_id": "1E2Ya9YT9nFphNSinz8TAkpDH5Fj32GHGi"
+                        }
+                    }
+                ]
+            } 
+    
 
 ### Retrieve a Piece [GET /pieces/{piece_id}/]
 + Parameters
@@ -303,6 +304,32 @@ You can specify the number of editions for the piece later (see Register number 
 
 ## Editions [/editions/]
 
+### Register a Number of Editions [POST]
+
++ Request (application/json)
+
+    + Attributes
+        + piece_id (number) - The ID of the piece
+        + num_editions (number) - Number of editions for the piece
+    
+    + Header
+        
+            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
+    
+    + Body
+    
+            {
+                "piece_id": 1071,
+                "num_editions": 10
+            } 
+
++ Response 201
+
+        {
+            "success": true,
+            "notification": "You successfully registered 10 editions for piece with ID 1ADJ5fYt1Hq4acL3e7gVr7st6SD8rZq51d."
+        }
+
 ### List Editions [GET]
 
 + Request
@@ -372,33 +399,6 @@ You can specify the number of editions for the piece later (see Register number 
                         }
                     ]
                 }    
-
-
-### Register a Number of Editions [POST]
-
-+ Request (application/json)
-
-    + Attributes
-        + piece_id (number) - The ID of the piece
-        + num_editions (number) - Number of editions for the piece
-    
-    + Header
-        
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
-    
-    + Body
-    
-            {
-                "piece_id": 1071,
-                "num_editions": 10
-            } 
-
-+ Response 201
-
-        {
-            "success": true,
-            "notification": "You successfully registered 10 editions for piece with ID 1ADJ5fYt1Hq4acL3e7gVr7st6SD8rZq51d."
-        }
 
 
 ### Retrieve an Edition [GET /editions/{bitcoin_id}/]
@@ -549,12 +549,6 @@ ownership action (transfer, consign, loan, ...) has been performed.
 
 ## Transfers [/ownership/transfers/]
 
-
-### List all Transfers [GET]
-
-+ Response 200
-
-
 ### Initiate a Transfer of Ownership [POST]
 
 + Attributes
@@ -587,6 +581,11 @@ ownership action (transfer, consign, loan, ...) has been performed.
         }
 
 
+### List all Transfers [GET]
+
++ Response 200
+
+
 ### Retrieve a Transfer [GET /ownership/transfers/{id}/]
 
 + Parameters
@@ -606,17 +605,6 @@ ownership action (transfer, consign, loan, ...) has been performed.
 When consigning a piece, you assign the right to the consignee to sell the piece on your
 behalve. Hereto, one needs to send a request for consignment to the consignee. Once
 accepted by the consignee, the consignment will change state and is recorded on the blockchain.
-
-
-### List all consignments [GET]
-
-+ Request (application/json)
-
-    + Header
-
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
-
-+ Response 200
 
 
 ### Consign an Edition [POST]
@@ -657,6 +645,17 @@ Send a request for consignment to the consignee.
             "errors": {"bitcoin_id": ["You don't have the appropriate rights to consign this piece"]},
             "success": false
         }
+
+
+### List all consignments [GET]
+
++ Request (application/json)
+
+    + Header
+
+            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
+
++ Response 200
 
 
 ### Confirm a Consignment [POST /ownership/consigns/confirm/]
@@ -749,16 +748,6 @@ When the consignee or owner decide that there is no more need to manage the sale
 edition. The consignee can unconsign immediately, the owner needs to request the consignee
 for an unconsignment.
 
-### List all Unconsignments [GET]
-
-+ Request (application/json)
-
-    + Header
-
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
-
-+ Response 200
-
 
 ### Unconsign an Edition [POST]
 
@@ -800,6 +789,18 @@ for an unconsignment.
                 "errors": {"bitcoin_id": ["You don't have the appropriate rights to unconsign this piece"]},
                 "success": false
             }
+
+
+### List all Unconsignments [GET]
+
++ Request (application/json)
+
+    + Header
+
+            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
+
++ Response 200
+
 
 ### Request an unconsignment [POST /ownership/unconsigns/request/]
 
@@ -889,17 +890,6 @@ You can confirm or deny the unconsignment. The confirmation is treated above.
 
 ## Loans for Pieces [/ownership/loans/pieces/]
 
-### List Loans for Pieces [GET]
-
-+ Request (application/json)
-    
-    + Header
-        
-            Authorization: Bearer <your_api_token>
-
-+ Response 200
-
-
 ### Loan a Piece [POST]
 
 + Request (application/json)
@@ -933,6 +923,17 @@ You can confirm or deny the unconsignment. The confirmation is treated above.
             }
 
 + Response 201 (application/json)
+
+
+### List Loans for Pieces [GET]
+
++ Request (application/json)
+    
+    + Header
+        
+            Authorization: Bearer <your_api_token>
+
++ Response 200
 
 
 ### Retrieve a Loan for a Piece [GET /ownership/loans/piece/{id}/]
@@ -1011,17 +1012,6 @@ When loaning an edition, you assign the right to the consignee to display the ed
 for a limited period of time. Once accepted by the loanee, the loan will change state and is
 recorded on the blockchain.
 
-### List Loans for Editions [GET]
-
-+ Request (application/json)
-    
-    + Header
-        
-            Authorization: Bearer <your_api_token>
-
-+ Response 200 (application/json)
-
-        {}
 
 ### Loan an Edition [POST]
 
@@ -1058,7 +1048,20 @@ recorded on the blockchain.
             "success": true
         }
 
+
+### List Loans for Editions [GET]
+
++ Request (application/json)
     
+    + Header
+        
+            Authorization: Bearer <your_api_token>
+
++ Response 200 (application/json)
+
+        {}
+    
+
 ### Retrieve a Loan for an Edition [GET /ownership/loans/editions/{id}/]
 
 + Parameters
