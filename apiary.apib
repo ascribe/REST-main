@@ -4,15 +4,15 @@ HOST: https://www.ascribe.io/api
 
 # ascribe ownership REST API
 
-Main RESTful API for ascribe. https://www.ascribe.io
+This is the main RESTful API for ascribe. https://www.ascribe.io
 
 ## Overview
 
 Here's a typical usage:
-- Get an access token: Sign up / log into ascribe webapp, then settings -> API integration, enter application name, copy token.
-- Register a piece (digital work). 
+- Get an access token for your app, using the ascribe webapp. This is a one-time action
+- Register a piece (digital work)
 - Register the number of editions for the piece
-- Transfer the ownership 
+- Transfer the ownership of an edition
 - Check the status of a piece, edition, etc
 
 Other usage:
@@ -35,21 +35,16 @@ encodes the following information:
 ![Authorization Flow PNG](https://s3-us-west-2.amazonaws.com/ascribe0/public/rest_doc/ascribe_api_workflow.png)
 
 
-## Register your Application or Marketplace
-The developer (e.g. admin@makx.com) should have an [ascribe account](https://www.ascribe.io), 
-login and go to settings>API settings to register
-the application or marketplace with following fields:
+## Get an Access Token for Your App
 
-- Name: `name of the marketplace`
-
-The user can then create a token of type 'Bearer'.
-
-# SPOOL API
-
-SPOOL is the Secure Public Online Ownership Ledger.
-An in-depth specification of the protocol can be found on
-[https://github.com/ascribe/spool](https://github.com/ascribe/spool) 
-
+- If needed, sign up the app to ascribe account
+  -Go to https://www.ascribe.io
+  -Click sign up
+  -Choose an account, with e.g. email admin@makx.com
+- Log into ascribe account
+- Go to settings (top right) -> API integration
+- Fill in the "Name" field. This should be the name of your app
+- Copy the token for use. Note you can always retrieve this later
 
 
 # Group Ownership
@@ -1185,7 +1180,17 @@ recorded on the blockchain.
         }
 
 
-# Group Copyright
+# Group Appendix
+
+## SPOOL API
+
+This API is a RESTful wrapper of the SPOOL protocol, an "ownership" overlay of the Bitcoin blockchain.
+
+SPOOL is the Secure Public Online Ownership Ledger.
+An in-depth specification of the protocol can be found on
+[https://github.com/ascribe/spool](https://github.com/ascribe/spool) 
+
+## Copyright
 
 This API & documentation is © 2015 ascribe GmbH.
 
