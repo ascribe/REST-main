@@ -131,13 +131,13 @@ You can specify the number of editions for the piece later (see Register number 
 
 ### List Pieces [GET]
 
-+ Request (application/json)
++ Request
 
     + Header
         
             Authorization: Bearer <your_api_token>
 
-+ Response 200
++ Response 200 (application/json)
 
     + Body
         
@@ -195,10 +195,10 @@ You can specify the number of editions for the piece later (see Register number 
 + Request
 
     + Header
+        
+            Authorization: Bearer <your_api_token>
 
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
-
-+ Response 200
++ Response 200 (application/json)
 
     + Body
     
@@ -274,13 +274,13 @@ You can specify the number of editions for the piece later (see Register number 
 + Parameters
     + piece_id (integer) - The id of the Piece.
 
-+ Request (application/json)
++ Request
 
     + Header
         
             Authorization: Bearer <your_api_token>
 
-+ Response 200
++ Response 200 (application/json)
 
 
 
@@ -288,13 +288,13 @@ You can specify the number of editions for the piece later (see Register number 
 + Parameters
     + piece_id (integer) - The id of the Piece.
 
-+ Request (application/json)
++ Request
 
     + Header
         
             Authorization: Bearer <your_api_token>
 
-+ Response 200
++ Response 200 (application/json)
 
         {
             "notification": "You have successfully deleted <your_piece> by <yourself>.",
@@ -314,7 +314,7 @@ You can specify the number of editions for the piece later (see Register number 
     
     + Header
         
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
+            Authorization: Bearer <your_api_token>
     
     + Body
     
@@ -323,7 +323,7 @@ You can specify the number of editions for the piece later (see Register number 
                 "num_editions": 10
             } 
 
-+ Response 201
++ Response 201 (application/json)
 
         {
             "success": true,
@@ -335,10 +335,10 @@ You can specify the number of editions for the piece later (see Register number 
 + Request
 
     + Header
+        
+            Authorization: Bearer <your_api_token>
 
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
-
-+ Response 200
++ Response 200 (application/json)
 
     + Body
             
@@ -409,10 +409,10 @@ You can specify the number of editions for the piece later (see Register number 
 + Request
 
     + Header
-            
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
+        
+            Authorization: Bearer <your_api_token>
 
-+ Response 200
++ Response 200 (application/json)
 
     + Body
     
@@ -504,10 +504,10 @@ You can specify the number of editions for the piece later (see Register number 
 + Request
 
     + Header
+        
+            Authorization: Bearer <your_api_token>
 
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
-
-+ Response 200
++ Response 200 (application/json)
 
         {
             "notification": "You have successfully deleted 1 editions.",
@@ -527,10 +527,10 @@ ownership action (transfer, consign, loan, ...) has been performed.
 + Request
 
     + Header
+        
+            Authorization: Bearer <your_api_token>
 
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
-
-+ Response 200
++ Response 200 (application/json)
 
 
 ### Retrieve a Registration [GET /ownership/registrations/{id}/]
@@ -538,13 +538,13 @@ ownership action (transfer, consign, loan, ...) has been performed.
 + Request
 
     + Header
-
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
+        
+            Authorization: Bearer <your_api_token>
 
 + Parameters
     + id (integer) - The ID of the registration.
 
-+ Response 200
++ Response 200 (application/json)
 
 
 ## Transfers [/ownership/transfers/]
@@ -560,9 +560,9 @@ ownership action (transfer, consign, loan, ...) has been performed.
 + Request (application/json)
 
     + Header
+        
+            Authorization: Bearer <your_api_token>
 
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
-    
     + Body
      
             {
@@ -573,7 +573,7 @@ ownership action (transfer, consign, loan, ...) has been performed.
             }
         
 
-+ Response 201
++ Response 201 (application/json)
 
         {
             "notification": "You have successfully transfered 1 edition(s) to foo2@mailinator.com.",
@@ -583,7 +583,13 @@ ownership action (transfer, consign, loan, ...) has been performed.
 
 ### List all Transfers [GET]
 
-+ Response 200
++ Request
+
+    + Header
+        
+            Authorization: Bearer <your_api_token>
+
++ Response 200 (application/json)
 
 
 ### Retrieve a Transfer [GET /ownership/transfers/{id}/]
@@ -591,13 +597,13 @@ ownership action (transfer, consign, loan, ...) has been performed.
 + Parameters
     + id (integer) - The ID of the transfer.
 
-+ Request (application/json)
++ Request
 
     + Header
+        
+            Authorization: Bearer <your_api_token>
 
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
-
-+ Response 200
++ Response 200 (application/json)
 
 
 ## Consignments [/ownership/consigns/]
@@ -620,8 +626,8 @@ Send a request for consignment to the consignee.
 + Request (application/json)
 
     + Header
-
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
+        
+            Authorization: Bearer <your_api_token>
             
     + Body
     
@@ -632,14 +638,14 @@ Send a request for consignment to the consignee.
                 "consign_message": "I consign this edition to you"
             }
 
-+ Response 201
++ Response 201 (application/json)
 
         {
             "notification": "You have successfully consigned 1 edition(s), pending their confirmation(s).",
             "success": true
         }
         
-+ Response 400
++ Response 400 (application/json)
 
         {
             "errors": {"bitcoin_id": ["You don't have the appropriate rights to consign this piece"]},
@@ -649,13 +655,13 @@ Send a request for consignment to the consignee.
 
 ### List all consignments [GET]
 
-+ Request (application/json)
++ Request
 
     + Header
+        
+            Authorization: Bearer <your_api_token>
 
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
-
-+ Response 200
++ Response 200 (application/json)
 
 
 ### Confirm a Consignment [POST /ownership/consigns/confirm/]
@@ -668,8 +674,8 @@ Allows a consignee to confirm a request for consignment.
 + Request (application/json)
 
     + Header
-
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
+        
+            Authorization: Bearer <your_api_token>
             
     + Body
     
@@ -677,7 +683,7 @@ Allows a consignee to confirm a request for consignment.
                 "bitcoin_id": "157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W",
             }
 
-+ Response 201
++ Response 201 (application/json)
         
     + Body
 
@@ -686,7 +692,7 @@ Allows a consignee to confirm a request for consignment.
                 "success": true
             }
             
-+ Response 400
++ Response 400 (application/json)
 
     + Body
     
@@ -706,8 +712,8 @@ Allows a consignee to deny a request for consignment.
 + Request (application/json)
 
     + Header
-
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
+        
+            Authorization: Bearer <your_api_token>
             
     + Body
     
@@ -715,7 +721,7 @@ Allows a consignee to deny a request for consignment.
                 "bitcoin_id": "157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W",
             }
 
-+ Response 201
++ Response 201 (application/json)
         
     + Body
 
@@ -724,7 +730,7 @@ Allows a consignee to deny a request for consignment.
                 "success": true
             }
 
-+ Response 400
++ Response 400 (application/json)
 
     + Body
     
@@ -739,7 +745,13 @@ Allows a consignee to deny a request for consignment.
 + Parameters
     + id (integer) - The ID of the consignment
 
-+ Response 200
++ Request
+
+    + Header
+        
+            Authorization: Bearer <your_api_token>
+
++ Response 200 (application/json)
 
 
 ## Unconsignments [/ownership/unconsigns/]
@@ -761,8 +773,8 @@ for an unconsignment.
 + Request (application/json)
 
     + Header
-
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
+        
+            Authorization: Bearer <your_api_token>
             
     + Body
         
@@ -772,7 +784,7 @@ for an unconsignment.
                 "unconsign_message": "I unconsign this piece from you. This is, I no longer manage the sales of your piece"
             }
 
-+ Response 201
++ Response 201 (application/json)
 
     + Body
  
@@ -781,7 +793,7 @@ for an unconsignment.
                 "success": true
             }
 
-+ Response 400
++ Response 400 (application/json)
 
     + Body
  
@@ -793,13 +805,13 @@ for an unconsignment.
 
 ### List all Unconsignments [GET]
 
-+ Request (application/json)
++ Request
 
     + Header
+        
+            Authorization: Bearer <your_api_token>
 
-            Authorization: Bearer 2GJT0yFOnHYKtp9sgNak4GURL9jpKD
-
-+ Response 200
++ Response 200 (application/json)
 
 
 ### Request an unconsignment [POST /ownership/unconsigns/request/]
@@ -824,7 +836,7 @@ of the edition. The consignee needs to confirm or deny the unconsignment.
                 "unconsign_request_message": "I unconsign this piece from you. This is, you no longer manage the sales of my piece"
             }                
 
-+ Response 201
++ Response 201 (application/json)
 
     + Body
             
@@ -833,7 +845,7 @@ of the edition. The consignee needs to confirm or deny the unconsignment.
                 "success": true
             }
 
-+ Response 400
++ Response 400 (application/json)
 
     An error will occur when trying to consign a piece that's not yours:
     
@@ -864,7 +876,7 @@ You can confirm or deny the unconsignment. The confirmation is treated above.
                 "bitcoin_id": "157od1WGsmh7ctYXEstTbsA7pzx6BoWU9W"
             }
 
-+ Response 201
++ Response 201 (application/json)
 
     + Body
             
@@ -876,8 +888,8 @@ You can confirm or deny the unconsignment. The confirmation is treated above.
 
 ### Retrieve an Unconsignment [GET /ownership/unconsigns/{id}/]
 
-+ Request (application/json)
-    
++ Request
+
     + Header
         
             Authorization: Bearer <your_api_token>
@@ -885,7 +897,7 @@ You can confirm or deny the unconsignment. The confirmation is treated above.
 + Parameters
     + id (integer) - The ID of the unconsignment
 
-+ Response 200
++ Response 200 (application/json)
 
 
 ## Loans for Pieces [/ownership/loans/pieces/]
@@ -927,13 +939,13 @@ You can confirm or deny the unconsignment. The confirmation is treated above.
 
 ### List Loans for Pieces [GET]
 
-+ Request (application/json)
++ Request
     
     + Header
         
             Authorization: Bearer <your_api_token>
 
-+ Response 200
++ Response 200 (application/json)
 
 
 ### Retrieve a Loan for a Piece [GET /ownership/loans/piece/{id}/]
@@ -941,13 +953,13 @@ You can confirm or deny the unconsignment. The confirmation is treated above.
 + Parameters
     + id (integer) - The ID of the loan
 
-+ Request (application/json)
++ Request
     
     + Header
         
             Authorization: Bearer <your_api_token>
 
-+ Response 200
++ Response 200 (application/json)
 
 
 ### Confirm a Loan for a Piece [POST /ownership/loans/pieces/confirm/]
@@ -1051,15 +1063,13 @@ recorded on the blockchain.
 
 ### List Loans for Editions [GET]
 
-+ Request (application/json)
++ Request
     
     + Header
         
             Authorization: Bearer <your_api_token>
 
 + Response 200 (application/json)
-
-        {}
     
 
 ### Retrieve a Loan for an Edition [GET /ownership/loans/editions/{id}/]
@@ -1067,13 +1077,13 @@ recorded on the blockchain.
 + Parameters
     + id (integer) - The ID of the loan
 
-+ Request (application/json)
++ Request
     
     + Header
         
             Authorization: Bearer <your_api_token>
 
-+ Response 200
++ Response 200 (application/json)
     
     + Attributes
         + loan (object) - The retreived loan object
