@@ -1193,7 +1193,7 @@ recorded on the blockchain.
         }
 
 
-# Group SPOOL Protocol Specification
+# Group SPOOL Protocol
 
 <pre>
   Title: SPOOL Protocol (SPOOL/1.0)
@@ -1238,7 +1238,8 @@ The key points are:
 ![alt tag](https://s3-us-west-2.amazonaws.com/ascribe0/public/ascribe_spool_transfer.PNG)
 
 ## Protocol Description
-Summary: Via OP_RETURN we attach verbs to the blockchain tx, such as Register, Consign, Transfer, Loan, ....
+Summary: Via OP_RETURN we attach verbs to the blockchain tx, such as Register, Consign,
+Transfer, Loan, ...
 
 Declarations
 - ```FEE```: mining fee based on transaction size (minimum ```10000 satoshi```)
@@ -1248,7 +1249,10 @@ Declarations
 - ```META```: Header for SPOOL protocol, e.g. ```<protocol><version> = ASCRIBESP00L01```
 
 ## Federated SPOOL actions
-A federated action (e.g. "register") associates a user with digital content. Hereto, a trusted federation wallet sends a transaction to both an address owned by the user and an address that represents a base58 hash of the digital content. Note that the wallet with the digital content address is not required to be owned by the user.
+A federated action (e.g. "register") associates a user with digital content. Hereto, a trusted
+federation wallet sends a transaction to both an address owned by the user and an address that
+represents a base58 hash of the digital content. Note that the wallet with the digital content
+address is not required to be owned by the user.
 
 ### Associate ###
 General association action (e.g. "change password") to attach content to a wallet
@@ -1305,7 +1309,8 @@ TX = [(FEDERATION : FEE+2*DUST]
 ```
 
 ### Migrate Content ###
-Associate two wallets, where the address does not represent hashed content. Usefull for password reset and other user/content updates.
+Associate two wallets, where the address does not represent hashed content. Useful for password
+reset and other user/content updates.
 - Mapping: `1-to-1 `
 - PySPOOL: `pyspool.Migration(FEDERATION, from_address, to_address, reason=<string>)`
 - Bitcoin:
@@ -1411,11 +1416,9 @@ TX = [(from_address : DUST+FEE)]
 Don't put on blockchain.
 
 
-# Group Appendix
+# Group Copyright
 
-## Copyright
+SPOOL, this API & documentation are © 2015 ascribe GmbH.
 
-This API & documentation is © 2015 ascribe GmbH.
-
-This API & documentation is available for use under the 
+SPOOL, this API & documentation are available for use under the 
 [Creative Commons CC-BY-SA 3.0 license](https://creativecommons.org/licenses/by-sa/3.0/). 
