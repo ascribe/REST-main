@@ -1252,9 +1252,10 @@ A federated action (e.g. "register") associates a user with digital content. Her
 
 ### Associate ###
 General association action (e.g. "change password") to attach content to a wallet
-- Mapping: ```1-to-1```
-- PySPOOL: ```pyspool.Association(FEDERATION, address, hash, reason=<string>)```
+- Mapping: `1-to-1`
+- PySPOOL: `pyspool.Association(FEDERATION, address, hash, reason=<string>)`
 - Bitcoin:
+
 ```
 TX = [(FEDERATION : FEE+DUST] 
      -> 
@@ -1268,9 +1269,10 @@ TX = [(FEDERATION : FEE+DUST]
 
 ### Register Editions ###
 Associate N editions of the same content to a wallet with N addresses
-- Mapping: ```1-to-many ```
-- PySPOOL: ```pyspool.Registration(FEDERATION, editions=[edition1_address, ..., editionN_address], hash)```
+- Mapping: `1-to-many `
+- PySPOOL: `pyspool.Registration(FEDERATION, editions=[edition1_address, ..., editionN_address], hash)`
 - Bitcoin:
+
 ```
 TX = [(FEDERATION : FEE+(1+<num_editions>)*DUST] 
      -> 
@@ -1287,9 +1289,10 @@ TX = [(FEDERATION : FEE+(1+<num_editions>)*DUST]
 
 ### Consigned Registration ###
 Register a single edition as a consignee. This allows marketplaces to register content on behalf of their users. 
-- Mapping: ```1-to-1 ```
-- PySPOOL: ```pyspool.ConsignedRegistration(FEDERATION, MARKET_content_address, hash)```
+- Mapping: `1-to-1 `
+- PySPOOL: `pyspool.ConsignedRegistration(FEDERATION, MARKET_content_address, hash)`
 - Bitcoin:
+
 ```
 TX = [(FEDERATION : FEE+2*DUST] 
      -> 
@@ -1303,9 +1306,10 @@ TX = [(FEDERATION : FEE+2*DUST]
 
 ### Migrate Content ###
 Associate two wallets, where the address does not represent hashed content. Usefull for password reset and other user/content updates.
-- Mapping: ```1-to-1 ```
-- PySPOOL: ```pyspool.Migration(FEDERATION, from_address, to_address, reason=<string>)```
+- Mapping: `1-to-1 `
+- PySPOOL: `pyspool.Migration(FEDERATION, from_address, to_address, reason=<string>)`
 - Bitcoin:
+
 ```
 TX = [(FEDERATION : FEE+2*DUST] 
      -> 
@@ -1319,9 +1323,10 @@ TX = [(FEDERATION : FEE+2*DUST]
 
 ### Fuel wallet ###
 Fuel a wallet with enough bitcoin to 
-- Mapping: ```1-to-1 ```
-- PySPOOL: ```pyspool.Fuel(FUEL, address)```
+- Mapping: `1-to-1 `
+- PySPOOL: `pyspool.Fuel(FUEL, address)`
 - Bitcoin:
+
 ```
 TX = [(FUEL : 2*FEE] 
      -> 
@@ -1336,10 +1341,11 @@ An interaction transfers rights, ownership or smart contracts between users.
 
 ### Transfer ownership ###
 Transfer the ownership of registered content
-- Mapping: ```1-to-1 ```
-- SPOOL: ```pyspool.Transfer(from_address, to_address)```
-- Dependencies: ```Fuel, Register, optional: Migrate, Consign```
+- Mapping: `1-to-1 `
+- SPOOL: `pyspool.Transfer(from_address, to_address)`
+- Dependencies: `Fuel, Register, optional: Migrate, Consign`
 - Bitcoin:
+
 ```
 TX = [(from_address : DUST+FEE)] 
      -> 
@@ -1352,10 +1358,11 @@ TX = [(from_address : DUST+FEE)]
 
 ### Consign ###
 Assign the rights to transfer content to another user
-- Mapping: ```1-to-1 ```
-- SPOOL: ```pyspool.Consign(from_address, to_address)```
-- Dependencies: ```Fuel, Register, optional: Migrate, Transfer```
+- Mapping: `1-to-1 `
+- SPOOL: `pyspool.Consign(from_address, to_address)`
+- Dependencies: `Fuel, Register, optional: Migrate, Transfer`
 - Bitcoin:
+
 ```
 TX = [(from_address : DUST+FEE)] 
      -> 
@@ -1368,10 +1375,11 @@ TX = [(from_address : DUST+FEE)]
 
 ### Unconsign ###
 Return the rights to transfer the content back to the owner
-- Mapping: ```1-to-1 ```
-- SPOOL: ```pyspool.Unconsign(from_address, to_address)```
-- Dependencies: ```Fuel, Consign, optional: Migrate```
+- Mapping: `1-to-1 `
+- SPOOL: `pyspool.Unconsign(from_address, to_address)`
+- Dependencies: `Fuel, Consign, optional: Migrate`
 - Bitcoin:
+
 ```
 TX = [(from_address : DUST+FEE)] 
      -> 
@@ -1384,10 +1392,11 @@ TX = [(from_address : DUST+FEE)]
 
 ### Loan ###
 Assign the right to display or use the content for a period of time
-- Mapping: ```1-to-1 ```
-- SPOOL: ```pyspool.Loan(from_address, to_address, start_date, end_date)```
-- Dependencies: ```Fuel, Register, optional: Migrate```
+- Mapping: `1-to-1 `
+- SPOOL: `pyspool.Loan(from_address, to_address, start_date, end_date)`
+- Dependencies: `Fuel, Register, optional: Migrate`
 - Bitcoin:
+
 ```
 TX = [(from_address : DUST+FEE)] 
      -> 
