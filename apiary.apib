@@ -19,21 +19,7 @@ Other usage:
 - [Consign](#reference/ownership/consignments) - give someone the right to sell a work on another's behalf (eg marketplace)
 - [Loan](#reference/ownership/loans-for-pieces) - give public display rights to someone, for a fixed time period
 
-## Authorization Flow
-Let's call the marketplace Makx.
-
-As authentication is used to connect and transfer data between Makx and ascribe, we
-use an encrypted connection (HTTPS).
-
-Ascribe authorizes applications via tokens. Each token is an alphanumeric that
-encodes the following information:
-
-- The ID of the application that was granted access.
-- The ID of the user who granted access to personal data.
-- A set of actions available to the application.
-
-![Authorization Flow PNG](https://s3-us-west-2.amazonaws.com/ascribe0/public/rest_doc/ascribe_api_workflow.png)
-
+Details on each step are below.
 
 ## Get an Access Token for Your App
 
@@ -1407,6 +1393,23 @@ TX = [(from_address : DUST+FEE)]
 
 ### Share, unshare ###
 Don't put on blockchain.
+
+# Group Appendix
+
+## Authorization Flow Details
+Let's call the marketplace Makx.
+
+As authentication is used to connect and transfer data between Makx and ascribe, we
+use an encrypted connection (HTTPS).
+
+Ascribe authorizes applications via tokens. Each token is an alphanumeric that
+encodes the following information:
+
+- The ID of the application that was granted access.
+- The ID of the user who granted access to personal data.
+- A set of actions available to the application.
+
+![Authorization Flow PNG](https://s3-us-west-2.amazonaws.com/ascribe0/public/rest_doc/ascribe_api_workflow.png)
 
 
 # Group Copyright
