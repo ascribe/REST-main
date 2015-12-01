@@ -24,10 +24,7 @@ Details on each step are below.
 
 ## Get an Access Token for Your App
 
-- If needed, sign up the app to ascribe account
-  -Go to https://www.ascribe.io
-  -Click sign up
-  -Choose an account, with e.g. email admin@makx.com
+- If needed, sign up an ascribe account: go to https://www.ascribe.io, click "Create a free account", then specify email and password
 - Log into ascribe account
 - Go to settings (top right) -> API integration
 - Fill in the "Name" field. This should be the name of your app
@@ -1188,67 +1185,6 @@ recorded on the blockchain.
             "notification": "You have denied the loan of art1 by art1, edition 10.",
             "success": true
         }
-
-
-## Share Pieces [/ownership/shares/pieces/]
-
-### Share a Piece [POST]
-
-+ Request (application/json)
-
-    + Attributes
-	    + share_emails (required, string) one or more emails
-	    + piece_id (required) ID of the piece
-	    + share_message (string) message
-
-    + Header
-
-	    Authorization: Bearer <your_api_token>
-
-    + Body
-
-            {
-		"share_emails": "alice@wonder.lnd,bob@wonder.lnd",
-		"share_message": "Check this out! - eve",
-		"piece_id": 3,
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "notification": "You have successfully shared 1 piece with alice@wonder.lnd, bob@wonder.lnd",
-                "success": true
-            }
-
-
-### List Shared Pieces [GET]
-
-+ Request
-
-    + Header
-
-            Authorization: Bearer <your_api_token>
-
-+ Response 200 (application/json)
-
-
-
-## Share Editions [/shares/editions/]
-
-### Share an Edition [POST]
-
-### List Shared Editions [GET]
-
-+ Request
-
-    + Header
-
-            Authorization: Bearer <your_api_token>
-
-+ Response 200 (application/json)
-
 
 
 # Group Appendix
