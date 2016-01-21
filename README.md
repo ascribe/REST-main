@@ -4,7 +4,7 @@
 ## SPOOL API
 
 Our SPOOL API is now hosted on apiary at 
-[docs.ascribe.apiary.io](http://docs.ascribe.apiary.io/)
+[www.ascribe.io/docs](https://www.ascribe.io/docs)
 
 ### Contributing
 If you wish to contribute to the SPOOL API blueprint, you're welcome to do so.
