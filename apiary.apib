@@ -930,6 +930,35 @@ You can confirm or deny the unconsignment. The confirmation is treated above.
 
 + Response 201 (application/json)
 
+        {
+            "loan": {
+                "btc_tx": null,
+                    "datetime": "2016-03-24T13:47:23.864767Z",
+                    "id": 2,
+                    "new_btc_address": null,
+                    "new_owner": "alice@wonderland.xyz",
+                    "piece": {
+                        "artist_name": "",
+                        "bitcoin_id": "mohBA3msbDtsrxACnDwmmjwHyyarABTjCJ",
+                        "id": 1,
+                        "thumbnail": {
+                            "id": 1,
+                            "mime": "image",
+                            "thumbnail_sizes": null,
+                            "url": "https://d1qjsxua1o9x03.cloudfront.net/media/thumbnails/ascribe_spiral.png",
+                            "url_safe": "https://d1qjsxua1o9x03.cloudfront.net/media%2Fthumbnails%2Fascribe_spiral.png"
+                        },
+                        "title": "wonderalice"
+                    },
+                    "prev_btc_address": "2016/3/24/13/47/23/309355:mohBA3msbDtsrxACnDwmmjwHyyarABTjCJ",
+                    "prev_owner": "alice@test.com",
+                    "status": null,
+                    "type": "LoanPiece"
+            },
+                "notification": "You have successfully loaned a piece to bob@test.com.",
+                "success": true
+        }
+
 
 ### List Loans for Pieces [GET]
 
@@ -1050,8 +1079,34 @@ recorded on the blockchain.
 + Response 201 (application/json)
 
         {
-            "notification": "You have successfully loaned 1 edition(s) to foo2@mailinator.com, pending their confirmation.",
-            "success": true
+            "loan": {
+                "btc_tx": null,
+                    "datetime": "2016-03-24T11:00:21.020439Z",
+                    "edition": {
+                        "artist_name": "",
+                        "bitcoin_id": "abc",
+                        "edition_number": 1,
+                        "id": 3,
+                        "parent": 2,
+                        "thumbnail": {
+                            "id": 2,
+                            "mime": "image",
+                            "thumbnail_sizes": null,
+                            "url": "https://d1qjsxua1o9x03.cloudfront.net/media/thumbnails/ascribe_spiral.png",
+                            "url_safe": "https://d1qjsxua1o9x03.cloudfront.net/media%2Fthumbnails%2Fascribe_spiral.png"
+                        },
+                        "title": "wonderalice"
+                    },
+                    "id": 5,
+                    "new_btc_address": null,
+                    "new_owner": "bob@test.com",
+                    "prev_btc_address": null,
+                    "prev_owner": "alice@wonderland.xyz",
+                    "status": null,
+                    "type": "Loan"
+            },
+                "notification": "You have successfully loaned 1 edition(s) to bob@test.com.",
+                "success": true
         }
 
 
