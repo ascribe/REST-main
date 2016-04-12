@@ -8,7 +8,7 @@ need to be aware of changes that break clients.
 Additionally, we only want to introduce changes that expose an interface that
 has an appropriate DX (developer experience).
 Hence, when making an API change, we discuss the future changes (before
-implementing them) in form of change proposals in this repository.
+implementing them) in the form of change proposals in this repository.
 
 
 ## How to write a proposal?
@@ -29,4 +29,4 @@ implementing them) in form of change proposals in this repository.
     - brief descriptions
     - separation of concerns
     - established facts (give sources if needed)
-    - don't over-engineer, writing a proposal shouldn't take you more than 2h!
+    - don't over-engineer, writing a proposal shouldn't take you more than 2 hours!
