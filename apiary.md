@@ -1,6 +1,11 @@
 FORMAT: 1A
 HOST: https://www.ascribe.io/api
 
+<!-- This file used to be named apiary.apib back when it was rendered online
+by apiary.io. When we turned off apiary.io, we wanted it to render nicely
+on GitHub, so we changed the filename to apiary.md so that GitHub would
+treat it as a Markdown file. -->
+
 
 # ascribe ownership REST API
 
